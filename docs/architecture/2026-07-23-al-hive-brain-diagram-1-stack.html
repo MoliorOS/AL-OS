@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hive Brain — Stack · Molior</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F5F5F5; --fg: #0A0A0A; --card: #FAFAFA;
+    --border: #E5E5E5; --muted: #737373;
+    --accent: #FFCE1B; --accent-bg: #FFFBEB;
+  }
+  body {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--fg);
+    padding: 56px 48px 80px;
+  }
+  .page-header { margin-bottom: 48px; }
+  .overline {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  h1 { font-size: 28px; font-weight: 300; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .page-meta { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .rule { height: 1px; background: var(--border); margin: 40px 0; }
+  .section { margin-bottom: 72px; }
+  .section-header { margin-bottom: 28px; }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 9px; border: 1px solid var(--border);
+    border-radius: 2px; color: var(--muted); background: var(--card);
+    margin-bottom: 12px;
+  }
+  .tag.accent { border-color: var(--accent); background: var(--accent-bg); color: var(--fg); }
+  h2 { font-size: 20px; font-weight: 300; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-desc { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 580px; }
+  .diagram-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 2px; overflow-x: auto; display: inline-block; max-width: 100%;
+  }
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="overline">Ackroyd Lowrie · July 2026 · Diagram 1 of 3</div>
+  <h1>The Hive Brain</h1>
+  <p class="page-meta">AL's operational world model — the reasoning layer on top of the deterministic
+  data layer. Prepared for the Jon / Oli / Felipe roadmap session, 2026-07-23.</p>
+</div>
+<div class="rule"></div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="tag accent">The umbrella</span>
+    <h2>One stack, two halves</h2>
+    <p class="section-desc">The Hive Brain is not a rival to the data layer — it reasons on top of it.
+    Deterministic ground truth on the right, reasoned memory on the left, joined at a single seam.</p>
+  </div>
+  <div class="diagram-card">
+    <svg width="760" height="720" viewBox="0 0 760 720" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow1" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+          <polygon points="0 0, 7 3, 0 6" fill="#0A0A0A"/>
+        </marker>
+      </defs>
+
+      <!-- Umbrella band -->
+      <rect x="24" y="24" width="712" height="56" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="380" y="50" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="16" font-weight="600" fill="#0A0A0A">HIVE BRAIN</text>
+      <text x="380" y="68" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#737373">AL's operational world model</text>
+
+      <!-- Left column: Operational World Model -->
+      <rect x="24" y="100" width="330" height="350" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="189" y="130" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Operational World Model</text>
+      <text x="189" y="147" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#737373">Molior</text>
+      <rect x="139" y="160" width="100" height="20" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1"/>
+      <text x="189" y="174" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="0.08em" fill="#0A0A0A">REASONED</text>
+
+      <rect x="44" y="200" width="290" height="40" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="189" y="225" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Events</text>
+
+      <rect x="44" y="250" width="290" height="40" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="189" y="275" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Knowledge</text>
+
+      <rect x="44" y="300" width="290" height="40" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="189" y="325" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Decisions</text>
+
+      <rect x="44" y="350" width="290" height="40" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="189" y="375" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Evidence</text>
+
+      <text x="189" y="414" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-style="italic" fill="#737373">"What do we know — and</text>
+      <text x="189" y="430" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-style="italic" fill="#737373">why did we decide it?"</text>
+
+      <!-- Right column: Data Layer -->
+      <rect x="406" y="100" width="330" height="350" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="130" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Data Layer</text>
+      <text x="571" y="147" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#737373">Jon + Danny</text>
+      <rect x="511" y="160" width="120" height="20" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="174" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="0.08em" fill="#737373">DETERMINISTIC</text>
+
+      <rect x="426" y="195" width="290" height="38" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="219" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Projects</text>
+
+      <rect x="426" y="243" width="290" height="38" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="267" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Deliverables</text>
+
+      <rect x="426" y="291" width="290" height="38" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="315" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Fees</text>
+
+      <rect x="426" y="339" width="290" height="38" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="571" y="363" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-weight="500" fill="#0A0A0A">Resourcing</text>
+
+      <text x="571" y="407" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-style="italic" fill="#737373">"What is the current state?"</text>
+
+      <!-- Seam -->
+      <line x1="400" y1="275" x2="360" y2="275" stroke="#0A0A0A" stroke-width="1.5" marker-end="url(#arrow1)"/>
+      <text x="380" y="260" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-weight="600" fill="#0A0A0A">the seam</text>
+      <text x="380" y="470" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-style="italic" fill="#737373">"Hive Brain reads deterministic ground truth from the Data Layer."</text>
+
+      <!-- Sources band -->
+      <rect x="24" y="490" width="712" height="60" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="44" y="506" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="0.1em" fill="#737373">SOURCES</text>
+
+      <rect x="70" y="515" width="140" height="28" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="140" y="533" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">Notion</text>
+
+      <rect x="230" y="515" width="140" height="28" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="300" y="533" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">Gmail</text>
+
+      <rect x="390" y="515" width="140" height="28" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="460" y="533" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">Egnyte</text>
+
+      <rect x="550" y="515" width="140" height="28" rx="2" fill="#F5F5F5" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="620" y="533" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">ArchiCAD</text>
+
+      <!-- Convergence bus: sources -> both columns -->
+      <line x1="140" y1="515" x2="140" y2="483" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="300" y1="515" x2="300" y2="483" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="460" y1="515" x2="460" y2="483" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="620" y1="515" x2="620" y2="483" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="140" y1="483" x2="620" y2="483" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="189" y1="483" x2="189" y2="450" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow1)"/>
+      <line x1="571" y1="483" x2="571" y2="450" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow1)"/>
+
+      <!-- Legend -->
+      <rect x="24" y="570" width="240" height="54" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <rect x="32" y="580" width="12" height="12" rx="1" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1"/>
+      <text x="50" y="589" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">Reasoned — Hive Brain</text>
+      <rect x="32" y="598" width="12" height="12" rx="1" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="50" y="607" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">Deterministic — Data Layer</text>
+
+      <!-- Framing line -->
+      <text x="380" y="660" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="12" font-style="italic" fill="#737373">"Data is the moat. The memory of what you did with the data is the deeper moat."</text>
+    </svg>
+  </div>
+</div>
+
+<div class="rule"></div>
+<p style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">
+  Prepared by Molior · July 2026 · Confidential
+</p>
+
+</body>
+</html>

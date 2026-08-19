@@ -1,0 +1,95 @@
+﻿Onboarding Policy[a]
+Document Ref:
+Version: 1
+Date Issued: XXX
+Approved By: HG / Operations Director
+Review Date: XXX
+
+
+1. Objectives
+This policy establishes a structured and consistent onboarding process to:
+* Ensure a smooth and professional integration of new employees
+* Provide all necessary tools, systems, and information for effective performance
+* Promote compliance with legal, operational, and organisational requirements
+* Support employee engagement, wellbeing, and retention
+* Ensure clarity of roles, responsibilities, and expectations from day one
+* Ensure practice standards and quality expectations are clearly understood
+2. Scope
+This policy applies to:
+* All new employees joining the practice
+* Direct applicants & applicants via a recruitment firm
+* All departments involved in onboarding activities
+* All onboarding stages including pre-start, first day, and probation
+3. Definitions
+Onboarding
+The structured process of integrating a new employee into the organisation, including administrative setup, induction, and initial training.
+Probation Period
+A defined period (typically 6 months) during which a new employee’s performance and suitability are assessed.
+Right to Work (RTW)
+Legal verification confirming an employee’s eligibility to work in the UK.
+Induction
+A formal introduction to the organisation, its systems, processes, and culture.
+Probation Goal Setting
+The process of defining clear objectives, expectations, and success criteria at the start of the probation period to support performance, development and to support the successful completion of the probationary period.
+4. Roles and Responsibilities
+Operations Director (OD)
+* Oversee the onboarding process
+* Approve hiring progression post-offer and references
+* Decide on continuation of hire if issues arise (e.g. references)
+* Lead 1-month check-in meeting, probation review and ongoing performance reviews
+* Approve probation outcomes
+Project Director (PD)
+* Participate in interview process
+* Provide feedback on candidates
+* Support onboarding communication where relevant
+* Assist with induction and team integration
+Finance Manager (FM)
+* Set up employee on financial systems (e.g. CMap, Xero)
+* Maintain employee financial records
+* Store and manage payroll-related documentation
+Office Manager (OM)
+* Coordinate onboarding process end-to-end
+* Set up IT systems, accounts, and equipment
+* Manage documentation (contracts, RTW, personal details)
+* Organise induction schedule and first-day activities
+* Ensure compliance with onboarding requirements
+* Ongoing scheduling of probation and performance reviews 
+
+
+Line Manager (LM)
+* Participate in probation process and performance reviews
+* Conduct regular check-ins (probation setting, 3-month, 6-month)
+* Support employee development and integration
+* Coordinate with OD on probation outcome
+
+
+5. Process
+5.1 The onboarding process follows a structured workflow including:
+* Offer acceptance and documentation
+* System and administrative setup
+* Compliance checks
+* First-day induction
+* Probation and review stages
+5.2 This process shall be followed consistently for all new employees to ensure quality and compliance.
+5.3. Please refer to the Recruitment, Onboarding and Probation process xxx.
+6. Policy Statement
+6.1 All new employees shall undergo a structured onboarding process to ensure effective integration into the practice.
+6.2 All pre-employment requirements, including contracts, references, and Right to Work checks, shall be completed prior to commencement of employment.
+6.3 All required systems, equipment, and access shall be prepared in advance of the employee’s start date to enable immediate productivity.
+6.4 A formal induction shall be undertaken for all new employees, covering company processes, systems, health and safety requirements, and practice standards.
+6.5 Induction shall ensure, as a minimum:
+* Understanding of company processes and ways of working
+* Awareness of health and safety responsibilities
+* Familiarity with systems, tools, and software
+* Introduction to team structure and communication channels
+* Understanding of practice standards and quality expectations
+6.6 All employees shall be subject to a defined probation period, during which performance, conduct, and suitability for the role shall be assessed.
+6.7 A probation setting process shall be undertaken at the start of employment to establish clear objectives, expectations, and success criteria.
+6.8 Regular check-ins shall be carried out during the probation period prior to the final review.
+6.9 Ultimate responsibility for managing onboarding and probation remains with the Operations Director, with delegation to the Office Manager and Line Manager.
+6.10 All onboarding documentation and employee records shall be maintained accurately and stored securely within Egnyte with controlled access.
+6.11 All employees are responsible for engaging with the onboarding process and completing required documentation and training.
+6.12 Compliance with this policy is mandatory.
+
+
+[a]Add probation to this policy to make it cover both

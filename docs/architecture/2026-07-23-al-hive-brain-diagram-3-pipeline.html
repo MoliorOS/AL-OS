@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hive Brain — Ingestion Pipeline · Molior</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F5F5F5; --fg: #0A0A0A; --card: #FAFAFA;
+    --border: #E5E5E5; --muted: #737373;
+    --accent: #FFCE1B; --accent-bg: #FFFBEB;
+  }
+  body {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--fg);
+    padding: 56px 48px 80px;
+  }
+  .page-header { margin-bottom: 48px; }
+  .overline {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  h1 { font-size: 28px; font-weight: 300; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .page-meta { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .rule { height: 1px; background: var(--border); margin: 40px 0; }
+  .section { margin-bottom: 72px; }
+  .section-header { margin-bottom: 28px; }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 9px; border: 1px solid var(--border);
+    border-radius: 2px; color: var(--muted); background: var(--card);
+    margin-bottom: 12px;
+  }
+  .tag.accent { border-color: var(--accent); background: var(--accent-bg); color: var(--fg); }
+  h2 { font-size: 20px; font-weight: 300; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-desc { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 580px; }
+  .diagram-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 2px; overflow-x: auto; display: inline-block; max-width: 100%;
+  }
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="overline">Ackroyd Lowrie · July 2026 · Diagram 3 of 3</div>
+  <h1>The Hive Brain</h1>
+  <p class="page-meta">AL's operational world model — the reasoning layer on top of the deterministic
+  data layer. Prepared for the Jon / Oli / Felipe roadmap session, 2026-07-23.</p>
+</div>
+<div class="rule"></div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="tag accent">The wedge</span>
+    <h2>You're already feeding it</h2>
+    <p class="section-desc">Two tributaries have been live since July 12. This isn't a new project —
+    it's connecting the pipes already built, and turning on email as the third feed.</p>
+  </div>
+  <div class="diagram-card">
+    <svg width="1150" height="330" viewBox="0 0 1150 330" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow3" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+          <polygon points="0 0, 7 3, 0 6" fill="#0A0A0A"/>
+        </marker>
+      </defs>
+
+      <text x="20" y="17" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="600" letter-spacing="0.06em" fill="#0A0A0A">STAGE 1 — ALREADY BUILT, JUST CONNECT THE PIPES</text>
+
+      <!-- Source cluster -->
+      <rect x="14" y="26" width="162" height="92" rx="4" fill="none" stroke="#FFCE1B" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+      <rect x="20" y="30" width="150" height="36" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="95" y="53" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">🟢 Meetings</text>
+
+      <rect x="20" y="74" width="150" height="36" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="95" y="97" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">🟢 CRM</text>
+
+      <rect x="20" y="118" width="150" height="36" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="95" y="141" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">🟡 Email</text>
+
+      <rect x="20" y="162" width="150" height="36" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="95" y="185" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">⚪ Egnyte</text>
+
+      <rect x="20" y="206" width="150" height="36" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="95" y="229" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">⚪ Xero</text>
+
+      <rect x="20" y="250" width="150" height="36" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="95" y="273" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">⚪ ArchiCAD</text>
+
+      <!-- Convergence bus -->
+      <line x1="170" y1="48" x2="190" y2="48" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="170" y1="92" x2="190" y2="92" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="170" y1="136" x2="190" y2="136" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="170" y1="180" x2="190" y2="180" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="170" y1="224" x2="190" y2="224" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="170" y1="268" x2="190" y2="268" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="190" y1="48" x2="190" y2="268" stroke="#0A0A0A" stroke-width="1"/>
+      <line x1="190" y1="165" x2="208" y2="165" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow3)"/>
+
+      <!-- Extraction agents -->
+      <rect x="210" y="110" width="150" height="110" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="285" y="133" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Extraction agents</text>
+      <text x="285" y="153" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">each source, its own</text>
+      <text x="285" y="168" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">agent — a PDF, a note,</text>
+      <text x="285" y="183" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">an ArchiCAD model all</text>
+      <text x="285" y="198" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">extract differently</text>
+
+      <line x1="360" y1="165" x2="398" y2="165" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow3)"/>
+
+      <!-- Extraction contract -->
+      <rect x="400" y="105" width="150" height="120" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="475" y="128" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Extraction contract</text>
+      <text x="475" y="150" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">Entity · Event ·</text>
+      <text x="475" y="166" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">Knowledge-fact</text>
+      <text x="475" y="186" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-style="italic" fill="#737373">stamped [Source: …]</text>
+      <text x="475" y="200" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-style="italic" fill="#737373">+ confidence</text>
+
+      <line x1="550" y1="165" x2="588" y2="165" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow3)"/>
+
+      <!-- Shared graph -->
+      <rect x="590" y="133" width="150" height="65" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="665" y="158" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Shared graph +</text>
+      <text x="665" y="174" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">vector index</text>
+
+      <line x1="740" y1="165" x2="778" y2="165" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow3)"/>
+
+      <!-- Nightly reflection -->
+      <rect x="780" y="115" width="150" height="100" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="855" y="138" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Nightly reflection</text>
+      <text x="855" y="155" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">episodic → semantic</text>
+      <text x="855" y="176" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">e.g. 2 meetings + the</text>
+      <text x="855" y="191" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">signed proposal → one</text>
+      <text x="855" y="206" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" fill="#737373">Decision node</text>
+
+      <line x1="930" y1="165" x2="968" y2="165" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow3)"/>
+
+      <!-- Reasoning (accent payoff) -->
+      <rect x="970" y="115" width="150" height="100" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="1045" y="138" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="600" fill="#0A0A0A">Reasoning</text>
+      <text x="1045" y="161" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">"Why was external</text>
+      <text x="1045" y="176" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">landscaping excluded</text>
+      <text x="1045" y="191" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">from the fee?"</text>
+
+      <!-- Legend -->
+      <rect x="20" y="298" width="12" height="12" rx="1" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="38" y="307" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">🟢 live</text>
+      <rect x="100" y="298" width="12" height="12" rx="1" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="118" y="307" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">🟡 partial</text>
+      <rect x="200" y="298" width="12" height="12" rx="1" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="218" y="307" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">⚪ new / not started</text>
+    </svg>
+  </div>
+</div>
+
+<div class="rule"></div>
+<p style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">
+  Prepared by Molior · July 2026 · Confidential
+</p>
+
+</body>
+</html>

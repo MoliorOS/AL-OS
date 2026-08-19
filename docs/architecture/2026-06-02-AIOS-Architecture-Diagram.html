@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIOS Two-Core Architecture — Ackroyd Lowrie</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F5F5F5;
+      --card: #FAFAFA;
+      --fg: #0A0A0A;
+      --border: #E5E5E5;
+      --muted: #737373;
+      --dim: #B0B0B0;
+      --accent: #FFCE1B;
+      --r: 2px;
+    }
+
+    body {
+      background: var(--card);
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+      color: var(--fg);
+      padding: 28px 24px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+    }
+    .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+    }
+    h1 { font-size: 27px; font-weight: 300; letter-spacing: -0.01em; }
+    .hdr-meta {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--dim); text-align: right; line-height: 1.7;
+    }
+
+    /* ── Fixed canvas ── */
+    .scroll { overflow-x: auto; }
+    .canvas {
+      position: relative;
+      width: 1040px;
+      height: 672px;
+      margin: 0 auto;
+    }
+
+    /* Zone labels (top strip) */
+    .zlabel {
+      position: absolute; top: 0;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+      transform: translateX(-50%); text-align: center; white-space: nowrap;
+    }
+    .zlabel small {
+      display: block; font-size: 7.5px; font-weight: 500; letter-spacing: 0.1em;
+      color: var(--dim); margin-top: 2px;
+    }
+
+    /* ── User cards ── */
+    .ucard {
+      position: absolute; left: 0; width: 116px;
+      border: 1px solid var(--border); border-radius: var(--r);
+      background: rgba(10, 10, 10, 0.02); padding: 8px 9px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .u-role {
+      font-size: 9px; font-weight: 600; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .u-name { font-size: 14px; font-weight: 500; margin-top: 1px; }
+    .u-sub { font-size: 8.5px; color: var(--dim); margin-top: 2px; letter-spacing: 0.03em; }
+
+    /* ── Dashboard (black, full height) ── */
+    .dash {
+      position: absolute; left: 186px; top: 24px; width: 104px; height: 624px;
+      border-radius: var(--r); background: var(--fg);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; gap: 8px; padding: 14px 10px;
+    }
+    .dash-title { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; }
+    .dash-div { width: 28px; height: 1px; background: rgba(255,255,255,0.25); }
+    .dash-tag { font-size: 10px; letter-spacing: 0.08em; color: rgba(255,255,255,0.72); line-height: 1.5; font-weight: 500; }
+    .dash-addon {
+      font-size: 8.5px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-weight: 400; line-height: 1.9; margin-top: 4px;
+    }
+
+    /* ── AI session boxes (black) ── */
+    .ai {
+      position: absolute; left: 360px; width: 92px;
+      border-radius: var(--r); background: var(--fg); color: #fff;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 8px; text-align: center;
+    }
+    .ai-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.25; }
+    .ai-sub { font-size: 8px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; margin-top: 4px; }
+
+    /* ── Cores ── */
+    .core { position: absolute; left: 522px; width: 330px; border-radius: var(--r); padding: 10px 12px; }
+    .core-hdr { display: flex; flex-direction: column; gap: 1px; margin-bottom: 8px; }
+    .core-name { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; }
+    .core-sub { font-size: 8.5px; font-weight: 500; letter-spacing: 0.06em; }
+
+    /* OS core (yellow / operational) */
+    .os-core {
+      top: 24px; height: 276px;
+      background: rgba(255,206,27,0.1); border: 1px solid rgba(255,206,27,0.8);
+      padding: 12px;
+      display: flex; flex-direction: column;
+    }
+    .os-core .core-name { color: var(--fg); }
+    .os-core .core-sub { color: #8a7415; text-transform: uppercase; }
+
+    .skills-box, .db-box {
+      background: rgba(255,206,27,0.18); border: 1px solid rgba(255,206,27,0.45);
+      border-radius: var(--r); padding: 12px;
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .box-lbl {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--fg); margin-bottom: 6px;
+    }
+    .box-lbl span { font-weight: 500; color: #8a7415; letter-spacing: 0.06em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+    .chip {
+      background: var(--card); border: 1px solid rgba(10,10,10,0.1); border-radius: 1px;
+      padding: 2px 6px; font-size: 9px; font-weight: 500;
+      font-family: 'Courier New', Courier, monospace; color: var(--fg);
+    }
+    .os-cols { display: flex; gap: 8px; margin-top: auto; }
+    .subbox {
+      flex: 1; background: rgba(255,206,27,0.36); border: 1px solid rgba(255,206,27,0.6);
+      border-radius: var(--r); padding: 12px;
+    }
+    .sb-name {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg); margin-bottom: 5px;
+    }
+    .sb-desc { font-size: 9.5px; color: var(--muted); line-height: 1.5; }
+    .sb-desc b { color: var(--fg); font-weight: 600; }
+
+    /* Brain core (yellow / data) */
+    .brain-core {
+      top: 348px; height: 300px;
+      background: rgba(255,206,27,0.1); border: 1px solid rgba(255,206,27,0.8); color: var(--fg);
+      padding: 12px; display: flex; flex-direction: column;
+    }
+    .brain-core .core-name { color: var(--fg); }
+    .brain-core .core-sub { color: #8a7415; text-transform: uppercase; }
+    .schema-cols { display: flex; gap: 7px; flex: 1; margin-top: auto; }
+    .schema {
+      flex: 1; background: rgba(255,206,27,0.36); border: 1px solid rgba(255,206,27,0.6);
+      border-radius: var(--r); padding: 8px 8px 9px;
+    }
+    .s-name { font-size: 10px; font-weight: 700; letter-spacing: 0.04em; color: var(--fg); margin-bottom: 4px; }
+    .s-desc { font-size: 9px; color: var(--muted); line-height: 1.5; }
+    .p2 {
+      display: inline-block; margin-top: 4px; font-size: 8px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+    }
+    .dream {
+      margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(255,206,27,0.35);
+      font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #8a7415;
+    }
+
+    /* ── Tools (full height box) ── */
+    .tools {
+      position: absolute; left: 922px; top: 24px; width: 118px; height: 624px;
+      border: 1px solid var(--border); border-radius: var(--r);
+      background: rgba(10, 10, 10, 0.02); padding: 8px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .tool {
+      flex: 1; border: 1px solid rgba(10, 10, 10, 0.08); border-radius: var(--r); background: #fff;
+      padding: 5px 8px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .t-name { font-size: 12px; font-weight: 600; color: var(--fg); }
+    .t-sub { font-size: 8.5px; color: var(--muted); margin-top: 1px; letter-spacing: 0.03em; }
+
+    /* ── Arrow layer ── */
+    .arrows { position: absolute; left: 0; top: 0; width: 1040px; height: 672px; z-index: 4; pointer-events: none; }
+
+    /* ── Edge labels ── */
+    .albl {
+      position: absolute; z-index: 6; font-size: 8px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+      text-align: center; line-height: 1.35;
+    }
+    .albl.dark { color: var(--fg); }
+    .albl b { color: var(--fg); font-weight: 700; }
+
+    /* ── Caption ── */
+    .caption {
+      margin-top: 18px; font-size: 12px; color: var(--muted); line-height: 1.65;
+      border-top: 1px solid var(--border); padding-top: 12px; max-width: 1040px; margin-left: auto; margin-right: auto;
+    }
+    .caption b { color: var(--fg); font-weight: 600; }
+  </style>
+</head>
+
+<body>
+
+  <div class="hdr">
+    <div>
+      <div class="eyebrow">Ackroyd Lowrie · AIOS Architecture</div>
+      <h1>The Two-Core Operating System</h1>
+    </div>
+  </div>
+
+  <div class="scroll">
+    <div class="canvas">
+
+      <!-- ── Zone labels ── -->
+      <div class="zlabel" style="left: 58px;">Users</div>
+      <div class="zlabel" style="left: 238px;">Interface</div>
+      <div class="zlabel" style="left: 406px;">AI</div>
+      <div class="zlabel" style="left: 687px;">OS · Brain</div>
+      <div class="zlabel" style="left: 981px;">Tools</div>
+
+      <!-- ── Arrows (SVG) ── -->
+      <svg class="arrows" viewBox="0 0 1040 672">
+        <defs>
+          <marker id="ah" markerWidth="8" markerHeight="8" refX="5.5" refY="3"
+                  orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#0A0A0A"></path>
+          </marker>
+        </defs>
+        <g stroke="#0A0A0A" stroke-width="1" marker-start="url(#ah)" marker-end="url(#ah)">
+          <!-- Users ⇄ Dashboard (E9) -->
+          <line x1="116" y1="105" x2="186" y2="105"></line>
+          <line x1="116" y1="315" x2="186" y2="315"></line>
+          <line x1="116" y1="525" x2="186" y2="525"></line>
+          <!-- Dashboard ⇄ AI (E8/E10) -->
+          <line x1="290" y1="115" x2="360" y2="115"></line>
+          <line x1="290" y1="245" x2="360" y2="245"></line>
+          <!-- AI ⇄ OS (E6) -->
+          <line x1="452" y1="115" x2="522" y2="115"></line>
+          <line x1="452" y1="245" x2="522" y2="245"></line>
+          <!-- OS ⇕ Brain (E3/E4 heartbeat) -->
+          <line x1="687" y1="300" x2="687" y2="348" stroke-width="1.6"></line>
+          <!-- Dashboard ⇄ Brain (E7 Metabase) -->
+          <line x1="290" y1="560" x2="522" y2="560"></line>
+          <!-- OS ⇄ Tools (E5 act) -->
+          <line x1="852" y1="140" x2="922" y2="140"></line>
+          <!-- Brain ⇄ Tools (E1 sync) -->
+          <line x1="852" y1="480" x2="922" y2="480"></line>
+        </g>
+      </svg>
+
+      <!-- ── Edge labels ── -->
+      <div class="albl" style="left: 116px; top: 80px; width: 70px;">capture insight</div>
+      <div class="albl" style="left: 116px; top: 290px; width: 70px;">execute workflows</div>
+      <div class="albl" style="left: 116px; top: 500px; width: 70px;">perform task</div>
+
+      <div class="albl" style="left: 290px; top: 92px; width: 70px;">trigger</div>
+      <div class="albl" style="left: 452px; top: 90px; width: 70px;">start<br>execution</div>
+
+      <div class="albl dark" style="left: 696px; top: 308px; width: 120px; text-align: left;"><b>query</b><br>context · insights</div>
+
+      <div class="albl" style="left: 300px; top: 532px; width: 212px;"><b>Metabase</b> — display structured data</div>
+
+      <div class="albl" style="left: 845px; top: 112px; width: 80px;">fetch<br>update</div>
+      <div class="albl" style="left: 838px; top: 446px; width: 94px;"><b>Sync · Ingest</b></div>
+
+      <!-- ── Users ── -->
+      <div class="ucard" style="top: 60px; height: 90px;">
+        <div class="u-role">Director</div>
+        <div class="u-name">Jon · Oliver</div>
+        <div class="u-sub">strategy · governance</div>
+      </div>
+      <div class="ucard" style="top: 270px; height: 90px;">
+        <div class="u-role">Senior</div>
+        <div class="u-name">Associates</div>
+        <div class="u-sub">review · approve scope</div>
+      </div>
+      <div class="ucard" style="top: 480px; height: 90px;">
+        <div class="u-role">Team</div>
+        <div class="u-name">~25 people</div>
+        <div class="u-sub">run workflows</div>
+      </div>
+
+      <!-- ── Dashboard ── -->
+      <div class="dash">
+        <div class="dash-title">Dashboard</div>
+        <div class="dash-div"></div>
+        <div class="dash-tag">role-based views<br>+ workflow triggers</div>
+        <div class="dash-addon">
+          · AL-Tracker<br>· Fee benchmarks<br>· Project status<br>· Pipeline<br>· Cashflow
+        </div>
+      </div>
+
+      <!-- ── AI ── -->
+      <div class="ai" style="top: 70px; height: 90px;">
+        <div class="ai-label">Claude<br>Code</div>
+      </div>
+      <div class="ai" style="top: 200px; height: 90px;">
+        <div class="ai-label">Codex</div>
+      </div>
+
+      <!-- ── OS core ── -->
+      <div class="core os-core">
+        <div class="core-hdr">
+          <span class="core-name">OS — Operational Core</span>
+          <span class="core-sub">Agent · maintain · learn · improve</span>
+        </div>
+        <div class="skills-box">
+          <div class="box-lbl">Skills <span>· workflows (SOPs)</span></div>
+          <div class="chips">
+            <span class="chip">/scope-draft</span>
+            <span class="chip">/cashflow-brief</span>
+            <span class="chip">/meeting-minutes</span>
+          </div>
+          <div class="os-cols">
+            <div class="subbox">
+              <div class="sb-name">Context</div>
+              <div class="sb-desc">
+                <b>Static:</b> SOPs · templates · scripts<br>
+                <b>Dynamic:</b> queried live from Brain
+              </div>
+            </div>
+            <div class="subbox">
+              <div class="sb-name">Connections</div>
+              <div class="sb-desc">
+                Act on tools — write / create.<br>
+                Live-fetch only as fallback.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dream">↻ learn cycle — from every workflow run · extract lessons · improve workflow</div>
+      </div>
+
+      <!-- ── Brain core ── -->
+      <div class="core brain-core">
+        <div class="core-hdr">
+          <span class="core-name">Brain — Knowledge Core</span>
+          <span class="core-sub">Agent · maintain · learn · enrich · evolve schema</span>
+        </div>
+        <div class="db-box">
+          <div class="box-lbl">Postgres DB · Supabase <span>· Schemas — AL's IP</span></div>
+          <div class="schema-cols">
+            <div class="schema">
+              <div class="s-name">Operational</div>
+              <div class="s-desc">projects · clients · roles · contacts · decisions · audit trail</div>
+            </div>
+            <div class="schema">
+              <div class="s-name">Analytical</div>
+              <div class="s-desc">fact tables · KPI rollups · fee actuals · win rates · time series</div>
+            </div>
+            <div class="schema">
+              <div class="s-name">Vector</div>
+              <div class="s-desc">past proposals · doc chunks · Egnyte · ISO · ALAQEP</div>
+            </div>
+          </div>
+        </div>
+        <div class="dream">↻ dream cycle — enrich · consolidate · derive insights · sync</div>
+      </div>
+
+      <!-- ── Tools ── -->
+      <div class="tools">
+        <div class="tool"><div class="t-name">Egnyte</div><div class="t-sub">files · drawings · ISO · ALAQEP</div></div>
+        <div class="tool"><div class="t-name">Google Workspace</div><div class="t-sub">Gmail · Calendar · Drive</div></div>
+        <div class="tool"><div class="t-name">CMap</div><div class="t-sub">fees · timesheets · stages</div></div>
+        <div class="tool"><div class="t-name">Pipedrive</div><div class="t-sub">CRM · bids · loss reasons</div></div>
+        <div class="tool"><div class="t-name">Notion</div><div class="t-sub">interim store · task boards</div></div>
+        <div class="tool"><div class="t-name">Xero</div><div class="t-sub">invoices · cash position</div></div>
+        <div class="tool"><div class="t-name">ArchiCAD</div><div class="t-sub">BIM · HTTP CLI</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="caption">
+    Two cores sit between AL's tools and its people. The <b>OS</b> (operational core) holds the firm's workflows as
+    skills — each skill loads its own static context, queries the Brain for live context, and acts on the tools. The
+    <b>Brain</b> (knowledge core) is an intelligent relational data layer on Supabase — three schemas custom to
+    AL's IP, kept current by scheduled ETL and made smart by a dream cycle that enriches, consolidates and derives
+    insight from every action. The governing rule the diagram encodes: <b>reads come from the Brain; actions go to the
+    Tools.</b> Only two arrows touch the tools — sync in, act out. Everything the team sees and triggers flows through
+    the OS ⇄ Brain heartbeat in the middle. The Dashboard (Metabase) is an optional surface on top of the Brain's
+    schemas; the system is fully operable through an AI session alone.
+  </p>
+
+</body>
+
+</html>

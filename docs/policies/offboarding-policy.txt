@@ -1,0 +1,97 @@
+﻿Offboarding Policy
+Document Ref:
+Version: 1
+Date Issued: XXX
+Approved By: HG / Operations Director
+Review Date: XXX
+
+
+1. Objectives
+This policy establishes a structured and consistent offboarding process to:
+* Ensure a smooth and professional exit for all employees
+* Protect company assets, data, and systems
+* Maintain compliance with legal and financial obligations
+* Capture feedback to support continuous improvement
+* Ensure continuity of work and minimise disruption
+
+
+2. Scope
+This policy applies to:
+* All employees leaving the practice (resignation, termination, or end of contract)
+* All departments involved in offboarding activities
+* All stages of offboarding including pre-leaving, final day, and post-departure
+
+
+3. Definitions
+Offboarding
+The formal process of managing an employee’s exit from the organisation.
+Final Pay
+The final salary payment including any outstanding salary, accrued holiday, or deductions.
+Exit Interview
+A structured discussion conducted prior to departure to gather feedback on the employee experience.
+Company Assets
+All physical and digital property belonging to the organisation (e.g. laptops, keys, software access).
+
+
+4. Roles and Responsibilities
+Operations Director (OD)
+* Send formal acknowledgement of resignation
+* Communicate leaver details to Ops team
+* Conduct or delegate exit interviews
+* Review feedback and identify improvement actions
+* Approve any exceptional offboarding arrangements
+* Ensure continuity of project resources
+
+
+Finance Manager (FM)
+* Process final salary payments
+* Issue P45 documentation
+* Update financial and payroll records
+* Ensure recovery or reconciliation of any financial items
+* Action leave dates on financial management systems
+
+
+Office Manager (OM)
+* Oversee and coordinate the offboarding process end-to-end
+* Manage return of company equipment and assets
+* Remove access to systems and accounts
+* Update internal records and systems
+* Coordinate IT offboarding with external providers (e.g. Dr Logic)
+
+
+Line Manager (LM)
+* Manage handover of work and responsibilities
+* Support knowledge transfer
+* Ensure continuity of project delivery
+* Provide feedback where relevant
+5. Process
+5.1 The offboarding process follows a structured workflow including:
+* Notification and initiation of offboarding
+* Pre-departure preparation and asset tracking
+* Final day procedures
+* IT and systems deactivation
+* Financial closure
+* Post-departure review and documentation
+5.2 The offboarding checklist shall be used to ensure consistency and completeness of the process.
+6. Policy Statement
+6.1 All employee departures shall be formally documented, with the leaving date agreed and recorded.
+6.2 A structured offboarding process shall be followed for all employees to ensure continuity of work and compliance with company requirements.
+6.3 All responsibilities, project work, and knowledge shall be appropriately handed over prior to the employee’s departure.
+6.4 All company property, including equipment, keys, and access devices, shall be returned prior to or on the employee’s final working day.
+6.5 All systems access shall be removed or restricted promptly upon departure, including but not limited to:
+* Email and communication systems
+* Financial and project systems
+* File storage platforms
+* Design and software tools
+6.6 External IT providers shall ensure secure deactivation of accounts and appropriate handling of company data.
+6.7 All employee records, systems, and internal directories shall be updated to reflect the departure.
+6.8 Final salary payments, including any outstanding holiday entitlement, shall be processed in accordance with company procedures, and all statutory documentation (including P45) shall be issued.
+6.9 All company assets shall be verified upon return, and any discrepancies or damage shall be escalated appropriately.
+6.10 An exit interview shall be conducted for all employees where reasonably practicable.
+6.11 Exit interviews shall, as a minimum, seek to:
+* Gather feedback on employee experience
+* Identify areas for organisational improvement
+* Understand reasons for departure
+6.12 Feedback from exit interviews shall be reviewed and used to inform continuous improvement of company processes and practices.
+6.13 All offboarding actions shall be completed, recorded, and formally closed.
+6.14 Compliance with this policy is mandatory.

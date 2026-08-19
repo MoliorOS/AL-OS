@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hive Brain — Ontology · Molior</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #F5F5F5; --fg: #0A0A0A; --card: #FAFAFA;
+    --border: #E5E5E5; --muted: #737373;
+    --accent: #FFCE1B; --accent-bg: #FFFBEB;
+  }
+  body {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--fg);
+    padding: 56px 48px 80px;
+  }
+  .page-header { margin-bottom: 48px; }
+  .overline {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+  }
+  h1 { font-size: 28px; font-weight: 300; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .page-meta { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .rule { height: 1px; background: var(--border); margin: 40px 0; }
+  .section { margin-bottom: 72px; }
+  .section-header { margin-bottom: 28px; }
+  .tag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 3px 9px; border: 1px solid var(--border);
+    border-radius: 2px; color: var(--muted); background: var(--card);
+    margin-bottom: 12px;
+  }
+  .tag.accent { border-color: var(--accent); background: var(--accent-bg); color: var(--fg); }
+  h2 { font-size: 20px; font-weight: 300; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .section-desc { font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 580px; }
+  .diagram-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 2px; overflow-x: auto; display: inline-block; max-width: 100%;
+  }
+  .diagram-card + .diagram-card { margin-top: 20px; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="overline">Ackroyd Lowrie · July 2026 · Diagram 2 of 3</div>
+  <h1>The Hive Brain</h1>
+  <p class="page-meta">AL's operational world model — the reasoning layer on top of the deterministic
+  data layer. Prepared for the Jon / Oli / Felipe roadmap session, 2026-07-23.</p>
+</div>
+<div class="rule"></div>
+
+<div class="section">
+  <div class="section-header">
+    <span class="tag accent">AL's ontology</span>
+    <h2>What lives inside the Hive Brain</h2>
+    <p class="section-desc">Not a generic knowledge graph — the four memory types, repopulated with AL's
+    own language, decision-centric, with a hard wall between permanent and project knowledge.</p>
+  </div>
+  <div class="diagram-card">
+    <svg width="820" height="560" viewBox="0 0 820 560" xmlns="http://www.w3.org/2000/svg">
+      <!-- Permanent / Project banner -->
+      <text x="410" y="60" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-weight="500" font-style="italic" fill="#737373">the permanent / project wall — never mix</text>
+      <rect x="20" y="68" width="780" height="32" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <line x1="410" y1="68" x2="410" y2="100" stroke="#FFCE1B" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="215" y="88" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-weight="500" fill="#0A0A0A">PERMANENT — Standards · Templates · Detail library</text>
+      <text x="615" y="88" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-weight="500" fill="#0A0A0A">PROJECT — Decisions · Drawings · Scope</text>
+
+      <!-- Lane 1: Entities -->
+      <rect x="20" y="115" width="180" height="380" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="110" y="145" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Entities</text>
+      <text x="110" y="161" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">what exists</text>
+      <text x="40" y="192" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Projects (RIBA, tier)</text>
+      <text x="40" y="214" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– People (staff + expertise)</text>
+      <text x="40" y="236" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Clients / Companies</text>
+      <text x="40" y="258" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Deliverables</text>
+      <text x="110" y="460" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">"resourcing done by</text>
+      <text x="110" y="474" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">conversation, not data"</text>
+
+      <!-- Lane 2: Events -->
+      <rect x="220" y="115" width="180" height="380" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="310" y="145" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Events</text>
+      <text x="310" y="161" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">what happened</text>
+      <text x="240" y="192" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Meetings ✓</text>
+      <text x="240" y="214" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Email threads</text>
+      <text x="240" y="236" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– RFIs / design queries</text>
+      <text x="240" y="258" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– QA reviews</text>
+      <text x="240" y="280" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Scope variations</text>
+      <text x="310" y="460" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">"minutes broken,</text>
+      <text x="310" y="474" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">unstandardized"</text>
+
+      <!-- Lane 3: Knowledge (emphasized) -->
+      <rect x="420" y="115" width="180" height="380" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="510" y="145" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Knowledge</text>
+      <text x="510" y="161" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">what we know &amp; why</text>
+      <text x="440" y="192" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Decisions + rationale</text>
+      <text x="440" y="214" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Standards / Regs</text>
+      <text x="440" y="236" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Lessons by typology</text>
+      <text x="440" y="258" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Expertise</text>
+
+      <!-- Lane 4: Evidence (dotted / pointer) -->
+      <rect x="620" y="115" width="180" height="380" rx="2" fill="#FAFAFA" stroke="#737373" stroke-width="1" stroke-dasharray="4 3"/>
+      <text x="710" y="145" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="13" font-weight="600" fill="#0A0A0A">Evidence</text>
+      <text x="710" y="161" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">the proof</text>
+      <text x="640" y="192" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Egnyte files</text>
+      <text x="640" y="214" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– ArchiCAD models</text>
+      <text x="640" y="236" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Proposals</text>
+      <text x="640" y="258" font-family="Satoshi,system-ui,sans-serif" font-size="11" fill="#0A0A0A">– Contracts</text>
+      <text x="710" y="460" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">"pointed to, never</text>
+      <text x="710" y="474" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9.5" font-style="italic" fill="#737373">dissolved into the graph"</text>
+
+      <!-- Legend -->
+      <rect x="20" y="505" width="320" height="44" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <rect x="28" y="514" width="12" height="12" rx="1" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="46" y="523" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">Knowledge — the differentiator</text>
+      <rect x="28" y="530" width="12" height="12" rx="1" fill="#FAFAFA" stroke="#737373" stroke-width="1" stroke-dasharray="3 2"/>
+      <text x="46" y="539" font-family="Satoshi,system-ui,sans-serif" font-size="10" fill="#737373">Evidence — pointed to, not owned</text>
+    </svg>
+  </div>
+
+  <!-- Companion — reasoning chain -->
+  <div class="diagram-card">
+    <svg width="760" height="270" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow2b" markerWidth="7" markerHeight="6" refX="6.5" refY="3" orient="auto">
+          <polygon points="0 0, 7 3, 0 6" fill="#0A0A0A"/>
+        </marker>
+      </defs>
+      <text x="20" y="20" font-family="Satoshi,system-ui,sans-serif" font-size="9" font-weight="500" letter-spacing="0.1em" fill="#737373">HOW IT REASONS</text>
+      <text x="20" y="38" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-style="italic" fill="#737373">The graph doesn't store the answer. It reconstructs it.</text>
+
+      <!-- node1: Meeting (Events) -->
+      <rect x="20" y="55" width="150" height="50" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="95" y="76" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Meeting</text>
+      <text x="95" y="92" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">fee scoping</text>
+
+      <!-- node2: Decision (Knowledge, accent) -->
+      <rect x="210" y="55" width="150" height="50" rx="2" fill="#FFFBEB" stroke="#FFCE1B" stroke-width="1.5"/>
+      <text x="285" y="74" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Decision</text>
+      <text x="285" y="88" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">exclude landscaping</text>
+      <text x="285" y="118" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">approved_by: Oliver</text>
+
+      <!-- node3: Deliverables list (Entities, Data Layer) -->
+      <rect x="400" y="55" width="150" height="50" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="475" y="76" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Deliverables list</text>
+      <text x="475" y="92" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">Data Layer</text>
+
+      <!-- node4: RIBA Scope of Services (Knowledge, permanent) -->
+      <rect x="590" y="55" width="150" height="50" rx="2" fill="#FAFAFA" stroke="#E5E5E5" stroke-width="1"/>
+      <text x="665" y="76" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">RIBA Scope</text>
+      <text x="665" y="92" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">of Services · permanent</text>
+
+      <!-- node5: Signed fee proposal (Evidence, dotted) -->
+      <rect x="210" y="170" width="150" height="50" rx="2" fill="#FAFAFA" stroke="#737373" stroke-width="1" stroke-dasharray="4 3"/>
+      <text x="285" y="191" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="11" font-weight="500" fill="#0A0A0A">Signed fee</text>
+      <text x="285" y="207" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">proposal — Evidence</text>
+
+      <!-- arrows -->
+      <line x1="170" y1="80" x2="202" y2="80" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow2b)"/>
+      <text x="186" y="72" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">produced</text>
+
+      <line x1="360" y1="80" x2="392" y2="80" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow2b)"/>
+      <text x="376" y="72" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">changed</text>
+
+      <line x1="550" y1="80" x2="582" y2="80" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow2b)"/>
+      <text x="566" y="72" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">references</text>
+
+      <line x1="285" y1="105" x2="285" y2="162" stroke="#0A0A0A" stroke-width="1" marker-end="url(#arrow2b)"/>
+      <text x="330" y="140" text-anchor="middle" font-family="Satoshi,system-ui,sans-serif" font-size="9" fill="#737373">supported by</text>
+
+      <text x="20" y="248" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">Six months later: "why aren't we doing the landscaping?" — the Hive Brain walks this path and</text>
+      <text x="20" y="262" font-family="Satoshi,system-ui,sans-serif" font-size="10" font-style="italic" fill="#737373">answers instantly. The "you didn't say you wouldn't" conversation never happens.</text>
+    </svg>
+  </div>
+</div>
+
+<div class="rule"></div>
+<p style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">
+  Prepared by Molior · July 2026 · Confidential
+</p>
+
+</body>
+</html>
