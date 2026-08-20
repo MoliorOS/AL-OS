@@ -6,7 +6,7 @@ the commercial proposal should stay the same shape.
 | Domain | Module | Depth in this build |
 |---|---|---|
 | `proposal/` | M1 | Full `SKILL.md` |
-| `os/` | — | Full `SKILL.md` |
+| `os/` | — | Full `SKILL.md`, including `populate` — the interview-driven mechanism for closing `## Open` gaps |
 | `delivery/` | M2 | Specified stub (`status: specified`) |
 | `practice/` | M2 | Specified stub |
 | `knowledge/` | M3 | Specified stub |

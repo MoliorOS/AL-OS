@@ -3,9 +3,11 @@
 > AL-OS is **Ackroyd Lowrie's own operating repo** — the layer that answers *how does this
 > practice work*. It sits alongside three other Molior-built repos but is the only one the
 > practice itself opens: `AL-BRAIN` is the vault (written only through `gbrain`), `AL-AGENT` is
-> the unattended runtime (cron, jobs, deterministic scripts), `Molior-app` is client-agnostic
-> platform infra. **AL-OS is for Jon, Oliver, and — as access rolls out — the senior team and
-> the practice.** See `SYSTEM.md` for the full repo map.
+> the unattended runtime (cron, jobs, deterministic scripts), `DIRECTOR-OS` is the
+> Administration + Personal tier (finance, governance, pipeline/fee strategy, each director's
+> own drafts) — restricted to Jon, Oliver, Jo, and checked in here as a submodule. **AL-OS
+> itself is Firm + Practice tier — designed to be safe for the whole practice to eventually
+> see.** See `SYSTEM.md` for the full repo map.
 
 **The test that keeps the four repos apart:** *does a human invoke it, or does a clock?*
 Human-invoked work lives here. Cron-invoked work lives in AL-AGENT. A workflow is designed and
@@ -48,8 +50,9 @@ architect cannot see the finance folder, Claude cannot either.*
 | Fee logic, scope items, DRM, benchmarks | `context/commercial.md`, `context/scope.md` |
 | Stage gates, deliverables, programme defaults | `context/delivery.md` |
 | Standards, QA model, HRB/BSA, ISO 19650 | `context/technical.md` |
-| Cashflow, invoice-release, terms | `context/finance.md` |
-| GDPR, consent, permissions, ALAQEP index | `context/governance.md` |
+| Cashflow, invoice-release, terms | `DIRECTOR-OS/admin/finance.md` (Administration tier — not in this repo) |
+| GDPR, consent, permissions decisions | `DIRECTOR-OS/admin/governance.md` (Administration tier) |
+| Record schemas — what fields a Person/Company/Deal/Project carries | `ontology/{people,companies,deals,projects}.md` |
 | Firm identity, sectors, service lines, org | `context/practice.md` |
 | Staff, JD ladder, expertise | `context/people.md` |
 | Clients, ICP, pipeline, hunting partners | `context/clients.md` |
@@ -87,9 +90,12 @@ architect cannot see the finance folder, Claude cannot either.*
    is not shown to them, regardless of what they ask.
 4. **GDPR is load-bearing.** Enrich ICP-matched contacts only; never delete non-ICP records;
    disclose before enrichment. AL currently has **no written GDPR policy** — treat
-   `context/governance.md`'s open section on this as a live gap, not a formality.
+   `DIRECTOR-OS/admin/governance.md`'s open section on this as a live gap, not a formality.
 5. **Confirm before irreversible or outward-facing actions.** Say what you're about to do first —
    this repo is client-owned; treat every write as visible to Jon and Oliver.
+6. **This repo is Firm + Practice tier — don't let Administration content back in.** If a
+   conversation surfaces cashflow, invoice-release, or pipeline-strategy detail, that belongs in
+   `DIRECTOR-OS`, not here — see `docs/decisions/0001-director-os-split.md`.
 
 ---
 
@@ -100,6 +106,7 @@ architect cannot see the finance folder, Claude cannot either.*
 | Draft a fee proposal / scope | `skills/proposal/scope-draft`, `fee-calc`, `drm`, `benchmark` |
 | Ask a question about how the practice works | `skills/os/ask` |
 | Log a decision, lesson, or capture a signal | `skills/os/capture` |
+| Interview someone to close named `## Open` gaps | `skills/os/populate` |
 | Onboard a new team member or role | `skills/os/onboard` |
 | End of session | `skills/os/encode` |
 | Everything else | check the routing table above before improvising |

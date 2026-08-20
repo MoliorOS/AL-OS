@@ -10,7 +10,7 @@ cannot either. The AIOS operates within existing JumpCloud permissions."*
 |---|---|---|
 | **Firm** | `context/practice.md`, `people.md`, `clients.md`, `brand.md`; `docs/policies/`; `roles/` itself | Everyone |
 | **Practice** | `context/commercial.md`, `scope.md`, `delivery.md`, `technical.md`; `skills/proposal/`, `skills/delivery/` | Senior team |
-| **Director** | `context/finance.md`, `governance.md`; pipeline value, cashflow, invoice-release calls | Jon, Oliver, Jo Greenoak |
+| **Director** | `DIRECTOR-OS/admin/{finance,governance}.md` (separate repo since 2026-08-20); pipeline value, cashflow, invoice-release calls | Jon, Oliver, Jo Greenoak |
 | **Project** | Project-scoped decisions, drawings, scope records (not yet built in this pass — see `projects/` deferral) | That project's team |
 
 Every `context/` file belongs to exactly one zone — check the table above (or that file's own
