@@ -1,6 +1,6 @@
 ---
 name: onboard
-version: 1.0.0
+version: 1.1.0
 status: live
 description: >
   Bring a new person into the fleet: determine their role and access zone, interview them for
@@ -18,7 +18,7 @@ triggers:
   - "/os-onboard"
   - "/onboard"
 allowed-tools: Read, Write, Bash, AskUserQuestion
-fixes: — (rollout infrastructure — supports the Phase A/B/C adoption path in ROADMAP.md; also the mechanism DIRECTOR-OS's retirement depends on — see docs/decisions/)
+fixes: — (rollout infrastructure — supports the Phase A/B/C adoption path in ${CLAUDE_PLUGIN_ROOT}/ROADMAP.md; the mechanism this plugin's personal-os model depends on — see ${CLAUDE_PLUGIN_ROOT}/docs/decisions/)
 ---
 
 ## What this does, and what changed
@@ -42,12 +42,12 @@ run through it once.
 
 Same logic as before this skill changed:
 
-1. Ask (or read from `context/people.md`) the person's actual JD tier (001–009 ladder) and
+1. Ask (or read from `${CLAUDE_PLUGIN_ROOT}/context/people.md`) the person's actual JD tier (001–009 ladder) and
    function — director, technical, project delivery, operations, or wider practice.
-2. Map onto an existing `roles/{role}.md` file (`director`, `technical`, `project-lead`,
-   `architect`, `operations`) via `roles/README.md`'s zone table. If none fits, copy
-   `roles/_template.md` and fill it in — don't grant broader access than their zone requires.
-3. Confirm the tier against `roles/README.md`'s rollout sequence (Tier A/B/C) — flag if
+2. Map onto an existing `${CLAUDE_PLUGIN_ROOT}/roles/{role}.md` file (`director`, `technical`, `project-lead`,
+   `architect`, `operations`) via `${CLAUDE_PLUGIN_ROOT}/roles/README.md`'s zone table. If none fits, copy
+   `${CLAUDE_PLUGIN_ROOT}/roles/_template.md` and fill it in — don't grant broader access than their zone requires.
+3. Confirm the tier against `${CLAUDE_PLUGIN_ROOT}/roles/README.md`'s rollout sequence (Tier A/B/C) — flag if
    onboarding someone ahead of the stated sequence without an explicit reason.
 4. State explicitly what they will **not** have access to, not just what they will.
 
@@ -55,7 +55,7 @@ Same logic as before this skill changed:
 
 Convention: the person's short/informal name (as they'd actually go by, not their full legal
 first name — `OLI-OS` not `OLIVER-OS`), uppercased, with `-OS` appended. Ask directly if unclear
-from `context/people.md` which short form they use. Confirm the exact name with the person
+from `${CLAUDE_PLUGIN_ROOT}/context/people.md` which short form they use. Confirm the exact name with the person
 before creating anything — this becomes a real GitHub repo name and can't be silently redone.
 
 ### 3. Scaffold content, by role
@@ -89,7 +89,7 @@ a fresh self-interview (step 4) — never copied from someone else, unlike `admi
 
 **Every other role** (first-pass shape, not yet validated by a real onboarding): just the base
 above, no `admin/`. Practice- and Firm-zone content already lives in the AL-OS plugin itself
-(`context/`, accessible to whoever's role permits it per `roles/README.md`), so there's nothing
+(`${CLAUDE_PLUGIN_ROOT}/context/`, accessible to whoever's role permits it per `${CLAUDE_PLUGIN_ROOT}/roles/README.md`), so there's nothing
 role-shared to seed into a non-director's personal repo yet. If a real onboarding surfaces a need
 for role-shared content at another tier (e.g. a technical-standards working set for Wayne), add
 it here and update this section — don't invent it speculatively now.
@@ -97,10 +97,10 @@ it here and update this section — don't invent it speculatively now.
 ### 4. Interview for working-style.md
 
 Ask the person directly, conversationally (this is a self-interview, not filled in by anyone
-else — see `skills/os/populate` for the same discipline applied to owned `context/` gaps):
+else — see `skills/os/populate` for the same discipline applied to owned `${CLAUDE_PLUGIN_ROOT}/context/` gaps):
 
 1. **Communication and tone** — how should drafts written on their behalf sound? Anything from
-   `context/brand.md`'s firm-wide voice they personally deviate from?
+   `${CLAUDE_PLUGIN_ROOT}/context/brand.md`'s firm-wide voice they personally deviate from?
 2. **Delegation comfort** — which decisions are they comfortable having drafted for sign-off vs.
    which they want surfaced with no suggestion attached? Extends AL-OS's firm-wide "augmented,
    not autonomous" rule into their own actual comfort line.

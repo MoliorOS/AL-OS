@@ -1,13 +1,13 @@
 ---
 name: populate
-version: 0.1.0
+version: 0.2.0
 status: live
 description: >
   Run a targeted interview with a named person to close the specific `## Open — not yet
   captured` gaps this repo already knows are theirs to answer — not a generic brain-dump, a
   scoped conversation against real, named open items. Use when someone says "interview me",
   "let's fill in the gaps", "populate the context", "I have time to sit down with you", or
-  when a session opens with a person named in `context/`'s owner headers.
+  when a session opens with a person named in `${CLAUDE_PLUGIN_ROOT}/context/`'s owner headers.
 domain: os
 module: —
 owner: —
@@ -18,12 +18,12 @@ triggers:
   - "fill in the gaps"
   - "/populate"
 allowed-tools: Read, Grep, Edit, WebFetch, Glob
-fixes: L3 (email-as-knowledge-store) and the extraction backlog named throughout ROADMAP.md — this is the mechanism that actually closes it, session by session
+fixes: L3 (email-as-knowledge-store) and the extraction backlog named throughout `${CLAUDE_PLUGIN_ROOT}/ROADMAP.md` — this is the mechanism that actually closes it, session by session
 ---
 
 ## What this does, and why it's not `os-setup`
 
-This repo did not start empty — `context/` already has real structure, real citations, and
+This repo did not start empty — `${CLAUDE_PLUGIN_ROOT}/context/` already has real structure, real citations, and
 honestly-marked gaps. The job here is narrower and higher-signal than a from-scratch vault
 bootstrap: **find the specific things this repo already says a specific person needs to answer,
 and ask that person exactly those things** — not twelve generic categories hoping something
@@ -39,23 +39,25 @@ its write logic here.
 
 ### 1. Discover the open gaps
 
-Grep every file for `## Open` sections and header ownership lines:
+Grep every file for `## Open` sections and header ownership lines — plugin content and the
+working directory's own `admin/`, both:
 
 ```bash
-grep -rn "^## Open" context/ roles/ ROADMAP.md docs/decisions/
-grep -rln "^> \*\*Owner:\*\*" context/
+grep -rn "^## Open" "${CLAUDE_PLUGIN_ROOT}/context/" "${CLAUDE_PLUGIN_ROOT}/roles/" "${CLAUDE_PLUGIN_ROOT}/ROADMAP.md" "${CLAUDE_PLUGIN_ROOT}/docs/decisions/" admin/ 2>/dev/null
+grep -rln "^> \*\*Owner:\*\*" "${CLAUDE_PLUGIN_ROOT}/context/" admin/ 2>/dev/null
 ```
 
 For each hit, read the file in full — the owner line, the `Status:` note, and the actual bullet
 list under `## Open — not yet captured`. Build a working table: `{file, owner(s), each open
-item verbatim}`. Also check `skills/*/SKILL.md` files with `status: specified` — many name
-exactly which `context/` gap blocks them (e.g. `skills/proposal/*` blocked on
-`context/scope.md`; a director-tier skill in `DIRECTOR-OS/skills/` blocked on
-`DIRECTOR-OS/admin/finance.md` — flag these to `DIRECTOR-OS` if the person being interviewed is
-a director, but don't open that repo's files from here).
+item verbatim}`. Also check `${CLAUDE_PLUGIN_ROOT}/skills/*/SKILL.md` files with
+`status: specified` — many name exactly which `context/` gap blocks them (e.g.
+`skills/proposal/*` blocked on `${CLAUDE_PLUGIN_ROOT}/context/scope.md`; `skills/practice/
+cashflow-brief` blocked on the working directory's own `admin/finance.md` — that one only
+applies if the person being interviewed has an `admin/` folder at all, i.e. is a director).
 
-Also check `roles/README.md`'s "Surface question — not yet settled" and `ROADMAP.md`'s "What's
-next" — open decisions live there too, not only inside `context/`.
+Also check `${CLAUDE_PLUGIN_ROOT}/roles/README.md`'s "Surface question — not yet settled" and
+`${CLAUDE_PLUGIN_ROOT}/ROADMAP.md`'s "What's next" — open decisions live there too, not only
+inside `context/`.
 
 ### 2. Identify who's in the room
 
@@ -79,7 +81,7 @@ the session or offer to interview them on someone else's gap they happen to know
 ### 4. Run the interview — one item at a time, not a form
 
 For each open item, ask **the actual question that item already states**, not a rephrased
-generic prompt. Example: `context/finance.md`'s open item is "the full cashflow spreadsheet
+generic prompt. Example: `${CLAUDE_PLUGIN_ROOT}/context/finance.md`'s open item is "the full cashflow spreadsheet
 logic — VAT handling, the seasonal £150k→£7k pattern" — ask exactly that, ideally inviting them
 to walk through the live spreadsheet rather than describe it from memory.
 
@@ -98,8 +100,17 @@ honest note beats stalling the whole session on one gap.
 
 ### 5. Write immediately, per item — don't batch to the end
 
-As soon as an item is answered well enough to write, write it, using `skills/os/capture`'s own
-rules:
+As soon as an item is answered well enough to write, write it. **Which repo depends on which
+file the open item lives in:**
+- An item in `${CLAUDE_PLUGIN_ROOT}/context/*.md` — edit it there, then commit and push from
+  inside `${CLAUDE_PLUGIN_ROOT}` back to `MoliorOS/AL-OS`, exactly as `skills/os/capture`
+  describes. Don't defer this to the end of the interview — push per item, same reasoning as
+  writing per item.
+- An item in the working directory's own `admin/*.md` — edit it directly, bare relative path,
+  no plugin-root prefix, no separate push-from-elsewhere step; it commits with the rest of that
+  session's working-directory changes via `/encode`.
+
+Either way:
 - Edit the specific file's relevant section directly.
 - Replace or remove the `## Open — not yet captured` bullet that item corresponds to — don't
   leave a stale open question sitting next to its own answer.
@@ -118,16 +129,17 @@ still leaves three real improvements committed to memory, not lost in an unsaved
 
 Summarize, briefly:
 - Which items got closed, which got partially closed, which are still fully open.
-- If any item surfaced as actually belonging to `DIRECTOR-OS` (director-only content
-  accidentally discussed here) — say so and note it should be captured there instead, not in
-  this repo.
+- If any item surfaced as Administration-tier content (finance, governance, pipeline strategy)
+  but the person in the room isn't a director — say so and note it belongs in a director's own
+  `admin/`, not wherever this interview happened to surface it.
 - Suggest who should run `/populate` next, based on remaining open items' owners.
-- Point to `/encode` to close the session properly if this was the last thing happening.
+- Point to `/encode` to close out both repos properly (working directory and, if `context/` was
+  touched, the plugin install) if this was the last thing happening.
 
 ## What it does not do
 
 Does not invent categories to ask about beyond what `## Open` sections and `status: specified`
 skills already name — if there's a real gap this repo hasn't yet identified as open, that's a
 `skills/os/capture` moment (someone volunteering new information), not this skill's job to go
-fishing for. Does not touch `DIRECTOR-OS` — that repo has its own `skills/os/populate`, scoped to
-Administration and Personal content, run by the three people who have access to it.
+fishing for. Does not ask a non-director about Administration-tier gaps — those only exist in a
+director's own `admin/`, which a non-director's session has no reason to read at all.

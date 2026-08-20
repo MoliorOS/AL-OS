@@ -16,6 +16,6 @@ allowed-tools: TBD — not yet built
 fixes: F10 (site-data re-verification — three layers exist, none load-bearing)
 ---
 
-Not yet built. The checklist itself is fully documented in `context/delivery.md` — this skill's
+Not yet built. The checklist itself is fully documented in `${CLAUDE_PLUGIN_ROOT}/context/delivery.md` — this skill's
 procedure would walk each of the eight items in order, confirming a named responsible party has
 completed each before flagging Stage 0 as cleared.

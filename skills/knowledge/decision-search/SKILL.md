@@ -18,7 +18,7 @@ fixes: F28 (information lost when someone's away; decisions in email threads can
 ---
 
 Not yet built. Depends on decisions actually being captured as a distinct object first — see
-`docs/architecture/hive-brain-concept-and-meeting-plan.md` §3 for the full design, and
+`${CLAUDE_PLUGIN_ROOT}/docs/architecture/hive-brain-concept-and-meeting-plan.md` §3 for the full design, and
 `skills/knowledge/meeting-minutes` / `action-brief` for the capture side this reads from. This is
 explicitly out of scope for this build (the ontology fork that would formalize a `decision` type
-is deferred — see `docs/decisions/0001-repo-boundary.md`).
+is deferred — see `${CLAUDE_PLUGIN_ROOT}/docs/decisions/0001-repo-boundary.md`).

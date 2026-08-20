@@ -20,7 +20,7 @@ fixes: F02 (manual estimation of days/month per role), F13 (per-bid senior time 
 
 ## What this does
 
-Implements the fee formula from `context/commercial.md` exactly:
+Implements the fee formula from `${CLAUDE_PLUGIN_ROOT}/context/commercial.md` exactly:
 
 ```
 Stage fee = (Dir_days × £960 + SA_days × £720 + Arch_days × £640 + Asst_days × £480) × duration_months
@@ -36,14 +36,14 @@ above call).
 
 Per in-scope RIBA stage: Director days, Senior Architect days, Architect days, Assistant days,
 and stage duration in months. Overall: service level (Bronze/Silver/Gold). HRB status if it
-affects any stage's duration (see `context/commercial.md`'s HRB rule — extends Stage 4 to 12
+affects any stage's duration (see `${CLAUDE_PLUGIN_ROOT}/context/commercial.md`'s HRB rule — extends Stage 4 to 12
 months, Stage 5 to 24 months, when triggered).
 
 ## Procedure
 
-1. Read `context/commercial.md` for the current rate card and multiplier values — **do not
+1. Read `${CLAUDE_PLUGIN_ROOT}/context/commercial.md` for the current rate card and multiplier values — **do not
    hardcode these in the skill body; always read them fresh**, since a rate change only needs to
-   update one file (the one-home rule in `AGENTS.md`).
+   update one file (the one-home rule in `${CLAUDE_PLUGIN_ROOT}/AGENTS.md`).
 2. For each in-scope stage, compute `(Dir×960 + SA×720 + Arch×640 + Asst×480) × duration_months`.
 3. Sum all stage fees.
 4. Multiply by the service-level multiplier.

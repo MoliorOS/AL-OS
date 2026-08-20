@@ -18,5 +18,5 @@ fixes: F23 (manual minutes production — 30 hrs/wk, £149k/yr)
 Not yet built. Notion's AI meeting-notes capture is already live (see `SYSTEM.md` §3,
 `al-meeting-notes` — that's an AL-AGENT-owned automation, not this repo's). This skill would be
 the human-invoked companion: turning that raw transcript into structured, AL-formatted minutes on
-demand, and should read `context/governance.md`'s consent-recording gap before it's built —
+demand, and should read `${CLAUDE_PLUGIN_ROOT}/context/governance.md`'s consent-recording gap before it's built —
 recording consent currently has no owner.

@@ -21,21 +21,21 @@ fixes: F05 (DRM as a dead PDF — no live link to project execution or invoicing
 
 Produces a draft Design Responsibility Matrix: **P (Prescriptive) / D (Descriptive) /
 I (Indicative)** assigned to each role, per RIBA stage, for each relevant discipline —
-pre-populated from the service level and contract type per `context/scope.md`'s DRM section,
+pre-populated from the service level and contract type per `${CLAUDE_PLUGIN_ROOT}/context/scope.md`'s DRM section,
 override-only by the director.
 
 ## Inputs required
 
 Service level (Bronze/Silver/Gold), contract type (Traditional / Design & Build), the disciplines
-involved on this project (structural, MEP, fire, acoustic, etc. — see `context/scope.md` for
+involved on this project (structural, MEP, fire, acoustic, etc. — see `${CLAUDE_PLUGIN_ROOT}/context/scope.md` for
 which disciplines typically appear at which stage).
 
 ## Procedure
 
-1. Read `context/scope.md`'s DRM section for the default P/D/I pattern by service level and
+1. Read `${CLAUDE_PLUGIN_ROOT}/context/scope.md`'s DRM section for the default P/D/I pattern by service level and
    contract type.
 2. Build the stage × discipline grid for this project's in-scope stages.
-3. Apply defaults; flag any discipline or stage combination `context/scope.md` doesn't already
+3. Apply defaults; flag any discipline or stage combination `${CLAUDE_PLUGIN_ROOT}/context/scope.md` doesn't already
    cover as an open item rather than guessing a value.
 4. Output the draft grid alongside the scope record from `skills/proposal/scope-draft`, so both
    are reviewed together — ALAQEP-002 §6.4 requires the fee proposal to accurately reflect DRM
@@ -43,10 +43,10 @@ which disciplines typically appear at which stage).
 
 ## The known structural gap this skill sits inside
 
-Per `context/scope.md`: today's DRM is set once at proposal stage and becomes a dead PDF — no
+Per `${CLAUDE_PLUGIN_ROOT}/context/scope.md`: today's DRM is set once at proposal stage and becomes a dead PDF — no
 live link to project execution or invoicing, no way to reference it later without digging up the
 original file. This skill drafts the DRM; it does not solve the dead-PDF problem on its own. That
-requires a decision (not yet made — see `context/scope.md`'s open section) about where the signed
+requires a decision (not yet made — see `${CLAUDE_PLUGIN_ROOT}/context/scope.md`'s open section) about where the signed
 scope record and DRM live once approved, and how they stay linked to the live project.
 
 ## What it does not do

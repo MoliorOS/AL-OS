@@ -31,13 +31,13 @@ project is retrofit and/or Design & Build.
 
 ## Procedure
 
-1. Read `context/commercial.md`'s RICS Fees Bureau table for the sector and nearest CV band.
+1. Read `${CLAUDE_PLUGIN_ROOT}/context/commercial.md`'s RICS Fees Bureau table for the sector and nearest CV band.
 2. Apply the retrofit (+1.4%) or D&B (−2.8%) adjustment to the benchmark rate if either applies —
-   confirm with `context/commercial.md`'s open question on whether these compound with HRB
+   confirm with `${CLAUDE_PLUGIN_ROOT}/context/commercial.md`'s open question on whether these compound with HRB
    duration effects before applying both together on an HRB project.
 3. Compute the calculated fee as a percentage of CV.
 4. Compare: **below** the band → note that this may be a deliberate competitive choice, not an
-   error (per `context/commercial.md`, Oliver has knowingly priced ~1% below market before) —
+   error (per `${CLAUDE_PLUGIN_ROOT}/context/commercial.md`, Oliver has knowingly priced ~1% below market before) —
    report it, don't flag it as a mistake. **Within** → report and proceed. **Above** → report and
    note that a director should decide whether to re-evaluate staffing/duration or justify the
    premium (complexity, HRB, specialist expertise).
@@ -46,7 +46,7 @@ project is retrofit and/or Design & Build.
 
 ## The known gap this skill inherits
 
-Per `context/commercial.md`: this benchmark check uses Fees Bureau percentages only — it does
+Per `${CLAUDE_PLUGIN_ROOT}/context/commercial.md`: this benchmark check uses Fees Bureau percentages only — it does
 **not** compare against AL's own historical project actuals in CMap, which Oliver has named as
 the most valuable missing input (*"one good way of writing a fee proposal is to look at how much
 it cost you to deliver the last project that was similar"*). CMap has no stable API on AL's

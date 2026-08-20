@@ -18,6 +18,6 @@ allowed-tools: TBD — not yet built
 fixes: F08 (structured brief + playback not consistently held — root cause of the L1 brief-to-delivery gap)
 ---
 
-Not yet built. Depends on `context/delivery.md`'s kickoff section (step 2 — currently named as
+Not yet built. Depends on `${CLAUDE_PLUGIN_ROOT}/context/delivery.md`'s kickoff section (step 2 — currently named as
 "the missing workflow" with no template or owner yet assigned) being turned into an actual
 question set before this skill's procedure can be written.

@@ -16,5 +16,5 @@ allowed-tools: TBD — not yet built
 fixes: F09 (2ND CHECK row blank across every observed copy of Checklists.xlsx — QA gate ornamental)
 ---
 
-Not yet built. Depends on `context/technical.md` being populated with Wayne's actual QA criteria
+Not yet built. Depends on `${CLAUDE_PLUGIN_ROOT}/context/technical.md` being populated with Wayne's actual QA criteria
 — currently that file is almost entirely open pending his interview.

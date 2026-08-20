@@ -20,10 +20,10 @@ fixes: — (cross-cutting; supports every friction row by making captured knowle
 
 ## What this does
 
-Answers a question by reading `context/` and `docs/` — nothing else, and nothing invented.
+Answers a question by reading `${CLAUDE_PLUGIN_ROOT}/context/` and `${CLAUDE_PLUGIN_ROOT}/docs/` — nothing else, and nothing invented.
 Distinguishes clearly between three kinds of answer:
 
-1. **Documented and confirmed** — cite the specific `context/` file and quote or closely
+1. **Documented and confirmed** — cite the specific `${CLAUDE_PLUGIN_ROOT}/context/` file and quote or closely
    paraphrase it.
 2. **Documented but flagged open** — the file has a relevant `## Open — not yet captured` entry;
    say so, name the owner, don't guess at a value.
@@ -32,13 +32,13 @@ Distinguishes clearly between three kinds of answer:
 
 ## Procedure
 
-1. Check `AGENTS.md`'s routing table for which `context/` file should hold the answer.
+1. Check `${CLAUDE_PLUGIN_ROOT}/AGENTS.md`'s routing table for which `${CLAUDE_PLUGIN_ROOT}/context/` file should hold the answer.
 2. Read that file in full — not just a grep hit, since the surrounding context (owner, migrated
    vs. extracted status, open questions) changes how confidently to answer.
-3. If the routing table doesn't obviously point anywhere, check `docs/` — the audit and workflow
-   specs hold detail that hasn't been distilled into `context/` yet.
+3. If the routing table doesn't obviously point anywhere, check `${CLAUDE_PLUGIN_ROOT}/docs/` — the audit and workflow
+   specs hold detail that hasn't been distilled into `${CLAUDE_PLUGIN_ROOT}/context/` yet.
 4. Answer with the source named. If the honest answer is "this isn't captured yet, and here's who
-   would know," say exactly that — per `AGENTS.md`'s "templates are scaffolds" rule, this applies
+   would know," say exactly that — per `${CLAUDE_PLUGIN_ROOT}/AGENTS.md`'s "templates are scaffolds" rule, this applies
    to answers too: an honest gap beats a plausible-sounding guess.
 
 ## What it does not do
