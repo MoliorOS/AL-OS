@@ -60,27 +60,35 @@ before creating anything — this becomes a real GitHub repo name and can't be s
 
 ### 3. Scaffold content, by role
 
-**Director role** (proven shape — `JON-OS`, `OLI-OS`):
+**Every role gets this base** (proven shape — `JON-OS`, `OLI-OS`):
+```
+{NAME}-OS/
+  AGENTS.md          # this repo's own manifest — session startup, routing, core rules
+  CLAUDE.md           # "@AGENTS.md" pointer, same convention as AL-OS's own root
+  README.md
+  working-style.md
+  drafts/
+  skills/
+    CLAUDE.md          # explains this folder is for their own skills, not firm-wide ones
+```
+Generate `AGENTS.md` from `JON-OS`'s or `OLI-OS`'s own as the template — swap the name and
+pronouns, keep the structure (Session Startup, Routing table, Core Rules, Origin) identical.
+`skills/` starts empty except its own `CLAUDE.md` — never invent a placeholder skill to fill it.
+
+**Director role adds** (proven shape — `JON-OS`, `OLI-OS`):
 ```
 {NAME}-OS/
   admin/{finance,governance,pipeline-fee-strategy,project-commercials,resourcing}.md
-  working-style.md
-  drafts/
 ```
 `admin/*.md` is **role-shared, not person-specific** — these are the same underlying facts
 (the practice's finance logic, governance gaps, pipeline strategy) regardless of which director
 is asking. Seed them by copying from an existing director's repo (`JON-OS` or `OLI-OS`, whichever
 is reachable) rather than re-interviewing from scratch — only diverge them later if that
 director's own repo genuinely needs to record something different. `working-style.md` is always
-a fresh self-interview (step 4) — never copied from someone else.
+a fresh self-interview (step 4) — never copied from someone else, unlike `admin/`.
 
-**Every other role** (first-pass shape, not yet validated by a real onboarding):
-```
-{NAME}-OS/
-  working-style.md
-  drafts/
-```
-No `admin/` — Practice- and Firm-zone content already lives in the AL-OS plugin itself
+**Every other role** (first-pass shape, not yet validated by a real onboarding): just the base
+above, no `admin/`. Practice- and Firm-zone content already lives in the AL-OS plugin itself
 (`context/`, accessible to whoever's role permits it per `roles/README.md`), so there's nothing
 role-shared to seed into a non-director's personal repo yet. If a real onboarding surfaces a need
 for role-shared content at another tier (e.g. a technical-standards working set for Wayne), add

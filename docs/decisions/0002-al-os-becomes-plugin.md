@@ -55,6 +55,16 @@ access to.
   every other tier is a first draft, honestly marked as unvalidated until a real Tier B/C
   onboarding runs through it.
 
+**2026-08-20, same day, addendum:** `JON-OS` and `OLI-OS` were built out further, backwards —
+the repos first, `skills/os/onboard` updated to match second, so the scaffold logic reflects a
+real working structure rather than a guess. Every personal-os now gets its own `AGENTS.md`/
+`CLAUDE.md` (this repo's own manifest, not a copy of AL-OS's) and a `skills/` folder for
+genuinely personal skills — matching the original architecture diagram's Personal-OS box (Team /
+Working Style / Private drafts / Personal skills). This is *not* AL-OS's `context/`/`skills/`
+duplicated into each repo — that was explicitly rejected to avoid drift; a personal skill is one
+that doesn't belong in the shared plugin at all, and graduates there via `skills/os/capture` if
+it turns out to.
+
 ## Not decided here
 
 - Whether `admin/*.md` drift between `JON-OS` and `OLI-OS` needs an active reconciliation
