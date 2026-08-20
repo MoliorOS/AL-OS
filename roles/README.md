@@ -10,18 +10,21 @@ cannot either. The AIOS operates within existing JumpCloud permissions."*
 |---|---|---|
 | **Firm** | `context/practice.md`, `people.md`, `clients.md`, `brand.md`; `docs/policies/`; `roles/` itself | Everyone |
 | **Practice** | `context/commercial.md`, `scope.md`, `delivery.md`, `technical.md`; `skills/proposal/`, `skills/delivery/` | Senior team |
-| **Director** | `DIRECTOR-OS/admin/{finance,governance}.md` (separate repo since 2026-08-20); pipeline value, cashflow, invoice-release calls | Jon, Oliver, Jo Greenoak |
+| **Director** | Each director's own `admin/{finance,governance,pipeline-fee-strategy,project-commercials,resourcing}.md`, in their personal-os repo (`JON-OS`, `OLI-OS`, …) since 2026-08-20 | Jon, Oliver, Jo Greenoak |
 | **Project** | Project-scoped decisions, drawings, scope records (not yet built in this pass — see `projects/` deferral) | That project's team |
 
 Every `context/` file belongs to exactly one zone — check the table above (or that file's own
 header) before granting access to something new, rather than guessing.
 
-## Rollout tiers (the audit's Phase A/B/C, mapped to repo access)
+## Rollout tiers (the audit's Phase A/B/C, mapped to plugin install + personal-os scaffolding)
 
-- **Tier A — now.** Jon, Oliver, Biyi. Full repo access; Biyi is the embedded technical champion.
-- **Tier B — next.** Wayne, Andrew, Joe, Jo Greenoak. Role-scoped — see their individual files
-  below. Wayne's technical judgement should move earlier in the fee-proposal sequence once he's
-  onboarded (`context/delivery.md` names exactly where it currently lands too late).
+- **Tier A — now.** Jon (`JON-OS`), Oliver (`OLI-OS`). AL-OS plugin installed, director-tier
+  personal-os repo each. Biyi has the technical-champion role but not yet his own personal-os —
+  next to onboard.
+- **Tier B — next.** Wayne, Andrew, Joe, Jo Greenoak. Role-scoped personal-os repos via
+  `skills/os/onboard` — see their individual role files below. Wayne's technical judgement should
+  move earlier in the fee-proposal sequence once he's onboarded (`context/delivery.md` names
+  exactly where it currently lands too late).
 - **Tier C — later.** The full practice, roughly 15 architects. Biyi first, on his own projects,
   since he already has a working AI-assisted pattern to extend from.
 

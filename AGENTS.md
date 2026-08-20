@@ -1,13 +1,13 @@
 # AL-OS — Agent Context
 
-> AL-OS is **Ackroyd Lowrie's own operating repo** — the layer that answers *how does this
-> practice work*. It sits alongside three other Molior-built repos but is the only one the
-> practice itself opens: `AL-BRAIN` is the vault (written only through `gbrain`), `AL-AGENT` is
-> the unattended runtime (cron, jobs, deterministic scripts), `DIRECTOR-OS` is the
-> Administration + Personal tier (finance, governance, pipeline/fee strategy, each director's
-> own drafts) — restricted to Jon, Oliver, Jo, and checked in here as a submodule. **AL-OS
-> itself is Firm + Practice tier — designed to be safe for the whole practice to eventually
-> see.** See `SYSTEM.md` for the full repo map.
+> AL-OS is **Ackroyd Lowrie's shared skill layer** — a Claude Code **plugin**
+> (`.claude-plugin/plugin.json`), not a working directory. It ships fee-proposal, delivery-QA,
+> cashflow/invoice, meeting-capture, and OS-level (`ask`/`capture`/`populate`/`onboard`) skills,
+> plus the firm's context, roles, and process — but every person runs it from their own
+> **personal-os** repo (`JON-OS`, `OLI-OS`, …), scaffolded by `skills/os/onboard`. There is no
+> shared "AL-OS working directory" anymore — see `docs/decisions/0002-al-os-becomes-plugin.md`.
+> It sits alongside `AL-BRAIN` (the vault, written only through `gbrain`) and `AL-AGENT` (the
+> unattended runtime). See `SYSTEM.md` for the full repo map.
 
 **The test that keeps the four repos apart:** *does a human invoke it, or does a clock?*
 Human-invoked work lives here. Cron-invoked work lives in AL-AGENT. A workflow is designed and
@@ -22,19 +22,25 @@ moment either one changes.
 Built for Ackroyd Lowrie — a ~25-person RIBA-chartered architecture and design practice, ~40 live
 projects, founded 2014 by Jon Ackroyd and Oliver Lowrie. Full identity: `IDENTITY.md`.
 
-Access today: **Jon, Oliver** (Tier A — full repo). Planned: Wayne, Andrew, Joe, Jo (Tier B
-— role-scoped), then the practice (Tier C). See `roles/README.md` for the access-zone model —
-this repo mirrors AL's existing JumpCloud permissions rather than inventing a new one: *if an
-architect cannot see the finance folder, Claude cannot either.*
+Installed today: **Jon (`JON-OS`), Oliver (`OLI-OS`)** — Tier A. Planned: Wayne, Andrew, Joe, Jo
+(Tier B — role-scoped personal-os repos via `skills/os/onboard`), then the practice (Tier C). See
+`roles/README.md` for the access-zone model — this plugin mirrors AL's existing JumpCloud
+permissions rather than inventing a new one: *if an architect cannot see the finance folder,
+Claude cannot either.*
 
 ---
 
 ## Session Startup
 
+Applies whether you're in a personal-os repo with this plugin installed, or (rarely) working
+inside this repo directly:
+
 1. `date +%Y-%m-%d`
 2. Read `IDENTITY.md`, `SYSTEM.md`
 3. Read `ROADMAP.md` for current priorities
 4. Check `roles/{your-role}.md` if known — it scopes what you should read next
+5. If your working directory has its own `admin/*.md` or `working-style.md`, that's your
+   personal-os content — not shipped by this plugin, see `skills/CLAUDE.md`'s path convention
 
 ---
 
@@ -50,8 +56,8 @@ architect cannot see the finance folder, Claude cannot either.*
 | Fee logic, scope items, DRM, benchmarks | `context/commercial.md`, `context/scope.md` |
 | Stage gates, deliverables, programme defaults | `context/delivery.md` |
 | Standards, QA model, HRB/BSA, ISO 19650 | `context/technical.md` |
-| Cashflow, invoice-release, terms | `DIRECTOR-OS/admin/finance.md` (Administration tier — not in this repo) |
-| GDPR, consent, permissions decisions | `DIRECTOR-OS/admin/governance.md` (Administration tier) |
+| Cashflow, invoice-release, terms | your personal-os repo's `admin/finance.md` (director-tier, not shipped by this plugin) |
+| GDPR, consent, permissions decisions | your personal-os repo's `admin/governance.md` (director-tier) |
 | Record schemas — what fields a Person/Company/Deal/Project carries | `ontology/{people,companies,deals,projects}.md` |
 | Firm identity, sectors, service lines, org | `context/practice.md` |
 | Staff, JD ladder, expertise | `context/people.md` |
@@ -89,13 +95,14 @@ architect cannot see the finance folder, Claude cannot either.*
 3. **Permissions mirror JumpCloud.** A skill or context file scoped above someone's access tier
    is not shown to them, regardless of what they ask.
 4. **GDPR is load-bearing.** Enrich ICP-matched contacts only; never delete non-ICP records;
-   disclose before enrichment. AL currently has **no written GDPR policy** — treat
-   `DIRECTOR-OS/admin/governance.md`'s open section on this as a live gap, not a formality.
+   disclose before enrichment. AL currently has **no written GDPR policy** — treat a director's
+   `admin/governance.md`'s open section on this as a live gap, not a formality.
 5. **Confirm before irreversible or outward-facing actions.** Say what you're about to do first —
    this repo is client-owned; treat every write as visible to Jon and Oliver.
-6. **This repo is Firm + Practice tier — don't let Administration content back in.** If a
+6. **This plugin is Firm + Practice tier — don't let Administration content back in.** If a
    conversation surfaces cashflow, invoice-release, or pipeline-strategy detail, that belongs in
-   `DIRECTOR-OS`, not here — see `docs/decisions/0001-director-os-split.md`.
+   the relevant person's personal-os repo (`JON-OS/admin/`, `OLI-OS/admin/`), not here — see
+   `docs/decisions/0002-al-os-becomes-plugin.md`.
 
 ---
 

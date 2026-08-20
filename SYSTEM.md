@@ -2,16 +2,20 @@
 
 ## 1. Repo map
 
-Four repos, one deployment. The boundary: *does a human invoke it, or does a clock?* — plus,
-as of 2026-08-20, *which access zone does this content belong to?*
-(`docs/decisions/0001-director-os-split.md`)
+Repos, not all the same shape. The boundary: *does a human invoke it, or does a clock?* — plus,
+as of 2026-08-20, *is this shared skill/context, or one person's own store?*
+(`docs/decisions/0002-al-os-becomes-plugin.md`)
 
-| Repo        | Owns                                                                         | Who opens it                            | Location                   |
-| ----------- | ---------------------------------------------------------------------------- | --------------------------------------- | -------------------------- |
-| `AL-BRAIN`  | The vault — what the firm knows. Written **only** through `gbrain`           | Nobody directly                         | al-vps, github `AL-BRAIN`  |
-| `AL-AGENT`  | Unattended runtime — crontab, jobs, deterministic scripts                    | Cron;                                   | al-vps, github `AL-AGENT`  |
-| **`AL-OS`** | **How the practice works** — Firm + Practice tier: identity, context, skills, roles, docs, roadmap | **Jon, Oliver, senior team → practice** | github `AL-OS` (this repo) |
-| `DIRECTOR-OS` | Administration + Personal tier — finance, governance, pipeline/fee strategy, each director's own drafts | Jon, Oliver, Jo Greenoak only | al-vps `~/DIRECTOR-OS`, github `MoliorOS/DIRECTOR-OS`. Checked in here as a git submodule. |
+| Repo          | Owns                                                                         | Who opens it                            | Location                   |
+| ------------- | ----------------------------------------------------------------------------- | --------------------------------------- | -------------------------- |
+| `AL-BRAIN`    | The vault — what the firm knows. Written **only** through `gbrain`           | Nobody directly                         | al-vps, github `AL-BRAIN`  |
+| `AL-AGENT`    | Unattended runtime — crontab, jobs, deterministic scripts                    | Cron;                                   | al-vps, github `AL-AGENT`  |
+| **`AL-OS`**   | **Shared skill layer** — a Claude Code plugin: context, skills, roles, docs, roadmap. Not a working directory. | Installed by everyone; content authored by senior team → practice | github `MoliorOS/AL-OS` (this repo) |
+| `JON-OS`, `OLI-OS`, … | **Personal-os** — one repo per person, their own `admin/*.md` (director tier only) + `working-style.md` + `drafts/`. Scaffolded by `skills/os/onboard`. Replaces `DIRECTOR-OS` (retired 2026-08-20). | That person only | github `MoliorOS/{NAME}-OS` |
+
+DIRECTOR-OS (a single shared repo for all directors, decided in ADR 0001) existed only briefly —
+superseded the same day by the per-person pattern above once AL-OS became a plugin. See
+`docs/decisions/0002-al-os-becomes-plugin.md` for why.
 
 **AL-BRAIN detail, since a skill or context file here may read it:** runs the stock
 `gbrain-base` (v1) schema pack — not `-v2` — specifically because v1 is the only bundled pack

@@ -1,0 +1,10 @@
+{
+  "name": "al-os",
+  "displayName": "AL-OS",
+  "description": "Ackroyd Lowrie's shared skill layer — fee proposals, delivery QA, cashflow/invoice checks, meeting capture, and the OS-level ask/capture/populate/onboard mechanics. Install this once; each person's own facts and drafts live in their own personal-os repo (e.g. JON-OS, OLI-OS), scaffolded by skills/os/onboard.",
+  "version": "1.0.0",
+  "author": { "name": "Molior" },
+  "homepage": "https://github.com/MoliorOS/AL-OS",
+  "repository": "https://github.com/MoliorOS/AL-OS",
+  "license": "UNLICENSED"
+}

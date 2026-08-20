@@ -1,6 +1,10 @@
 # ADR 0001 — Administration tier splits out into DIRECTOR-OS
 
-**Status:** Decided, 2026-08-20
+**Status:** Decided, 2026-08-20. **Partially superseded the same day** —
+`docs/decisions/0002-al-os-becomes-plugin.md` replaced the single shared `DIRECTOR-OS` repo with
+one personal-os repo per director (`JON-OS`, `OLI-OS`). The reasoning below for *why*
+Administration content needs its own store still holds; only the "one shared repo for all
+directors" part changed. Read 0002 alongside this, not instead of it.
 
 ## Decision
 

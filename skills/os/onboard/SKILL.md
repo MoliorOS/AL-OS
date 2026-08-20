@@ -1,50 +1,137 @@
 ---
 name: onboard
-version: 0.1.0
+version: 1.0.0
 status: live
 description: >
-  Onboard a new person or role into AL-OS — determine their tier and access zone, point them at
-  the right roles/ file, and confirm what they can and can't see. Use when a new team member is
-  being brought into this repo, or an existing person's access needs to change.
+  Bring a new person into the fleet: determine their role and access zone, interview them for
+  their own working-style, scaffold a brand-new personal-os repo for them (e.g. JON-OS, OLI-OS),
+  seed it with role-appropriate content, create the GitHub repo, and commit. Use when a new team
+  member has installed the AL-OS plugin and needs their own working directory, or when someone
+  says "onboard me", "set up my personal-os", "/os-onboard", or "/onboard".
 domain: os
 module: —
 owner: —
 access-tier: firm
 triggers:
-  - "onboard [name] to AL-OS"
-  - "what should [name] have access to"
+  - "onboard me"
+  - "set up my personal-os"
+  - "/os-onboard"
   - "/onboard"
-allowed-tools: Read
-fixes: — (rollout infrastructure — supports the Phase A/B/C adoption path in ROADMAP.md)
+allowed-tools: Read, Write, Bash, AskUserQuestion
+fixes: — (rollout infrastructure — supports the Phase A/B/C adoption path in ROADMAP.md; also the mechanism DIRECTOR-OS's retirement depends on — see docs/decisions/)
 ---
 
-## What this does
+## What this does, and what changed
 
-Places a new person into the tier and access-zone model in `roles/README.md`, and either points
-them at an existing `roles/{role}.md` file or helps create a new one from `roles/_template.md`.
+This used to only scope *access within AL-OS itself*. Since AL-OS became a plugin
+(`.claude-plugin/plugin.json`) rather than a working directory, that's no longer where a new
+person's own facts and drafts live — they need their **own repo**. This skill now does the full
+job: determine role, interview for personal content, scaffold and create that repo, seed it with
+role-appropriate content, and hand back a working directory the person can actually open Claude
+Code in.
+
+**What's proven vs. what's a first draft:** the director-tier scaffold shape is real — `JON-OS`
+and `OLI-OS` exist and are the reference this skill's director branch is built from. Every other
+role's scaffold shape (technical, project-lead, architect, operations) is a first pass, honestly
+marked as such below — don't treat it as validated until a real Tier B/C onboarding has actually
+run through it once.
 
 ## Procedure
 
-1. **Determine the person's actual JD tier** (`context/people.md`'s ladder, 001–009) and their
-   function (director, technical, project delivery, operations, or wider practice) — this maps
-   directly to the access zones in `roles/README.md`.
-2. **Check whether an existing role file already fits.** Most people should map onto
-   `director.md`, `technical.md`, `project-lead.md`, `architect.md`, or `operations.md` without a
-   new file.
-3. **If none fits, copy `roles/_template.md`** and fill it in with their actual zone(s), the
-   skills scoped to them, and their rhythm — don't grant broader access than their zone requires,
-   even if it would be more convenient.
-4. **State explicitly what they cannot see**, not just what they can — per the audit's own
-   permission rule (`context/governance.md`): if they can't see it in JumpCloud, they shouldn't
-   see it here either.
-5. **Confirm the tier against `roles/README.md`'s rollout sequence** — Tier B people (Wayne,
-   Andrew, Joe, Jo) and Tier C (the wider practice) shouldn't be onboarded ahead of the sequence
-   without an explicit reason.
-6. **Flag the unresolved surface question** (`roles/README.md`) if onboarding someone in Tier B or
-   C — most of the practice will never open a terminal, and that decision should land before
-   volume onboarding starts.
+### 1. Determine role and access zone
+
+Same logic as before this skill changed:
+
+1. Ask (or read from `context/people.md`) the person's actual JD tier (001–009 ladder) and
+   function — director, technical, project delivery, operations, or wider practice.
+2. Map onto an existing `roles/{role}.md` file (`director`, `technical`, `project-lead`,
+   `architect`, `operations`) via `roles/README.md`'s zone table. If none fits, copy
+   `roles/_template.md` and fill it in — don't grant broader access than their zone requires.
+3. Confirm the tier against `roles/README.md`'s rollout sequence (Tier A/B/C) — flag if
+   onboarding someone ahead of the stated sequence without an explicit reason.
+4. State explicitly what they will **not** have access to, not just what they will.
+
+### 2. Name the new repo
+
+Convention: the person's short/informal name (as they'd actually go by, not their full legal
+first name — `OLI-OS` not `OLIVER-OS`), uppercased, with `-OS` appended. Ask directly if unclear
+from `context/people.md` which short form they use. Confirm the exact name with the person
+before creating anything — this becomes a real GitHub repo name and can't be silently redone.
+
+### 3. Scaffold content, by role
+
+**Director role** (proven shape — `JON-OS`, `OLI-OS`):
+```
+{NAME}-OS/
+  admin/{finance,governance,pipeline-fee-strategy,project-commercials,resourcing}.md
+  working-style.md
+  drafts/
+```
+`admin/*.md` is **role-shared, not person-specific** — these are the same underlying facts
+(the practice's finance logic, governance gaps, pipeline strategy) regardless of which director
+is asking. Seed them by copying from an existing director's repo (`JON-OS` or `OLI-OS`, whichever
+is reachable) rather than re-interviewing from scratch — only diverge them later if that
+director's own repo genuinely needs to record something different. `working-style.md` is always
+a fresh self-interview (step 4) — never copied from someone else.
+
+**Every other role** (first-pass shape, not yet validated by a real onboarding):
+```
+{NAME}-OS/
+  working-style.md
+  drafts/
+```
+No `admin/` — Practice- and Firm-zone content already lives in the AL-OS plugin itself
+(`context/`, accessible to whoever's role permits it per `roles/README.md`), so there's nothing
+role-shared to seed into a non-director's personal repo yet. If a real onboarding surfaces a need
+for role-shared content at another tier (e.g. a technical-standards working set for Wayne), add
+it here and update this section — don't invent it speculatively now.
+
+### 4. Interview for working-style.md
+
+Ask the person directly, conversationally (this is a self-interview, not filled in by anyone
+else — see `skills/os/populate` for the same discipline applied to owned `context/` gaps):
+
+1. **Communication and tone** — how should drafts written on their behalf sound? Anything from
+   `context/brand.md`'s firm-wide voice they personally deviate from?
+2. **Delegation comfort** — which decisions are they comfortable having drafted for sign-off vs.
+   which they want surfaced with no suggestion attached? Extends AL-OS's firm-wide "augmented,
+   not autonomous" rule into their own actual comfort line.
+3. **Working rhythm** — when do they actually expect to open this repo, and is there anything
+   about session start they want beyond what the plugin's own hook already shows?
+
+Write directly into `working-style.md`. If they only answer one question, write that one and
+leave the rest as an honest open item — don't pad with generic defaults.
+
+### 5. Create the repo
+
+```bash
+mkdir -p {NAME}-OS
+cd {NAME}-OS
+git init -q
+git add -A
+git commit -q -m "Scaffold {NAME}-OS via AL-OS skills/os/onboard"
+gh repo create MoliorOS/{NAME}-OS --private --source=. --push
+```
+
+`gh repo create` and `git push` are both in this plugin's `settings.json` `ask` list — state
+what's about to be created and pushed before it prompts, same as every other outward-facing
+action in this repo.
+
+### 6. Hand off
+
+Tell the person plainly:
+- Their repo's location and GitHub URL.
+- To open Claude Code with this new repo as the working directory, with the AL-OS plugin
+  installed (`claude plugin install https://github.com/MoliorOS/AL-OS` — see AL-OS's own
+  `README.md`).
+- What they can and can't see, restated from step 1.
+- If director-tier: that `admin/*.md` was seeded from an existing peer's repo and may already be
+  slightly stale — worth a skim, not assumed current forever.
 
 ## What it does not do
 
-Does not grant JumpCloud access itself — this skill scopes access *within* this repo, assuming
-JumpCloud is the source of truth for whether someone should have any access at all.
+Does not grant JumpCloud access itself — this skill scopes what a person's own repo contains,
+assuming JumpCloud is the source of truth for whether they should have any access at all. Does
+not keep two directors' `admin/*.md` in sync after scaffolding — each repo evolves independently
+once created; reconciling drift between `JON-OS` and `OLI-OS` is a manual `skills/os/capture`-style
+edit, not something this skill watches for.

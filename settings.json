@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(context/**)",
+      "Read(skills/**)",
+      "Read(roles/**)",
+      "Read(docs/**)",
+      "Read(ontology/**)",
+      "Read(*.md)",
+      "git status",
+      "git log",
+      "git diff",
+      "git add",
+      "git commit"
+    ],
+    "ask": [
+      "git push",
+      "gh pr create",
+      "gh repo create"
+    ],
+    "deny": [
+      "Read(//home/ubuntu/**/.env)",
+      "Write(../AL-BRAIN/**)"
+    ]
+  }
+}
