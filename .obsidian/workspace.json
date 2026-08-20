@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "fa4b62e76b9ea1ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "4aa51a46e5bdc3e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e5f52b1c0433593b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "context/commercial.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "commercial"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cf09b8fcd3e569cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "f5ff20606e44c613",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7b69b644cefcb3fa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "94b532eba1eab3eb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "34ae2fd50ca9bf6f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "aaff0622b2a6b08d",
+    "type": "split",
+    "children": [
+      {
+        "id": "35093a4d9e7772cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ac74f8095eee51f7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "context/commercial.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "67fdd8ef32c1704e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "context/commercial.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "4ee8cdeec98bec3b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f68d49a67e5450d5",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "fa130eb5948ac59c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "context/commercial.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "e5f52b1c0433593b",
+  "lastOpenFiles": [
+    "context/clients.md",
+    "context/brand.md",
+    "skills/delivery/brief-playback/SKILL.md",
+    "docs/ackroyd_lowrie_business_plan_2025.md",
+    "docs/ackroyd_lowrie_business_plan.md",
+    "docs",
+    "New folder",
+    "context/people.md",
+    "context/stack.md",
+    "context/technical.md",
+    "roles/project-lead.md",
+    "roles/operations.md",
+    "roles/director.md",
+    "roles/architect.md",
+    "roles/_template.md",
+    "docs/workflows/MOL-W02-Project-Kickoff-and-Brief-Capture.md",
+    "docs/workflows/MOL-W01-Fee-Proposal-and-Appointment-Assembly.md",
+    "docs/source-corpus/Marketing-Plan-2026-Summary.md",
+    "docs/source-corpus/AL-Marketing-Lead-to-Win-Funnel-Description.md",
+    "docs/source-corpus/AL-BUSINESS-PLAN.md",
+    "docs/source-corpus/Ackroyd_Lowrie_Tech_Stack_Strategy_Data_Extraction.md",
+    "docs/policies/README.md",
+    "docs/decisions/0001-repo-boundary.md",
+    "docs/audit/AUDIT-REPORT-AL.md",
+    "docs/audit/AL-Audit-Intel-Summary.md",
+    "docs/architecture/2026-05-28-Ackroyd-Lowrie-POST-CALL.md",
+    "docs/architecture/kb-aec.md",
+    "docs/architecture/hive-brain-diagram-content.md"
+  ]
+}

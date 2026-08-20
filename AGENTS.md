@@ -20,7 +20,7 @@ moment either one changes.
 Built for Ackroyd Lowrie — a ~25-person RIBA-chartered architecture and design practice, ~40 live
 projects, founded 2014 by Jon Ackroyd and Oliver Lowrie. Full identity: `IDENTITY.md`.
 
-Access today: **Jon, Oliver, Biyi** (Tier A — full repo). Planned: Wayne, Andrew, Joe, Jo (Tier B
+Access today: **Jon, Oliver** (Tier A — full repo). Planned: Wayne, Andrew, Joe, Jo (Tier B
 — role-scoped), then the practice (Tier C). See `roles/README.md` for the access-zone model —
 this repo mirrors AL's existing JumpCloud permissions rather than inventing a new one: *if an
 architect cannot see the finance folder, Claude cannot either.*
@@ -59,8 +59,6 @@ architect cannot see the finance folder, Claude cannot either.*
 | Who can see what | `roles/{role}.md` |
 | Audit findings, workflow specs, architecture, policies, decisions | `docs/{audit,workflows,architecture,policies,decisions}/` |
 
-Folders not yet built in this pass (`ontology/`, `projects/`, `memory/`, `intelligence/`,
-`archive/`) are deferred, not abandoned — see `docs/decisions/` once they're opened.
 
 ---
 
@@ -80,30 +78,18 @@ Folders not yet built in this pass (`ontology/`, `projects/`, `memory/`, `intell
 
 ## Core Rules
 
-1. **AL-BRAIN is never written directly.** All access to the vault goes through `gbrain` (MCP
-   tool or CLI) — no exceptions, no "just this once."
-2. **`AL-BRAIN/skillpack.json` keeps `skills: []` permanently.** The vault holds knowledge, never
-   code. All skills and scripts live in AL-OS (human-invoked) or AL-AGENT (unattended).
-3. **Augmented by default, not full-auto.** Most of what this repo automates is a *suggestion*,
+1. **Augmented by default, not full-auto.** Most of what this repo automates is a *suggestion*,
    not a decision. Oliver: *"you don't want to automate the decisions. You want to automate the
    suggestion, and then the architect makes the choice."*
-4. **Deterministic where possible.** Fee arithmetic, benchmark lookups, and stage-gate logic are
+2. **Deterministic where possible.** Fee arithmetic, benchmark lookups, and stage-gate logic are
    calculations, not prompts. Reserve AI judgement for what's actually ambiguous.
-5. **Permissions mirror JumpCloud.** A skill or context file scoped above someone's access tier
+3. **Permissions mirror JumpCloud.** A skill or context file scoped above someone's access tier
    is not shown to them, regardless of what they ask.
-6. **GDPR is load-bearing.** Enrich ICP-matched contacts only; never delete non-ICP records;
+4. **GDPR is load-bearing.** Enrich ICP-matched contacts only; never delete non-ICP records;
    disclose before enrichment. AL currently has **no written GDPR policy** — treat
    `context/governance.md`'s open section on this as a live gap, not a formality.
-7. **Never commit secrets.** Credential *names and locations* live in `SYSTEM.md`; values live in
-   `.env` (gitignored) or `Molior-app/secrets/` host-side. Never a bearer token in a committed
-   config file.
-8. **Templates are scaffolds, not outputs.** No `[bracketed placeholder]` ships in any file. Where
-   knowledge genuinely isn't captured yet, write a real `## Open — not yet captured` section
-   naming the specific question and the person who can answer it.
-9. **Confirm before irreversible or outward-facing actions.** Say what you're about to do first —
+5. **Confirm before irreversible or outward-facing actions.** Say what you're about to do first —
    this repo is client-owned; treat every write as visible to Jon and Oliver.
-10. **Pipedrive is the BD system of record today; Notion is the parallel-run replacement.**
-    Don't treat Notion as authoritative until `context/clients.md` says the switch has happened.
 
 ---
 

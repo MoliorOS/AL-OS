@@ -1,9 +1,5 @@
 # ROADMAP — the unified roadmap
 
-Jon asked for this on 2026-07-02: *"I feel like we haven't fully utilized you to maximum
-effect."* He wanted a single roadmap, not scattered initiatives, integrating Danny's work with
-Molior's. This is that document. It has been open since then — first output is this repo.
-
 ---
 
 ## What's live today
